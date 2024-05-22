@@ -1,4 +1,4 @@
-module org.example.pointeu {
+module com.example.demo {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -11,6 +11,6 @@ module org.example.pointeu {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
 
-    opens org.example.pointeu to javafx.fxml;
-    exports org.example.pointeu;
+    opens view to javafx.fxml;
+    exports view;
 }
