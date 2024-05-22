@@ -15,7 +15,7 @@ public class Employee {
     private Planning planning ;
     private ArrayList<TimeClocking> ListClocking ;
 
-    public Employee(int id, String firstName, String lastName, String post, String mail, String tel ,int DeltaWorkTime) {
+    public Employee(int id, String firstName, String lastName, String post, String mail, String tel , int DeltaWorkTime, Planning planning) {
         Id = id;
         FirstName = firstName;
         LastName = lastName;
@@ -74,7 +74,6 @@ public class Employee {
     public String getTel() {
         return Tel;
     }
-
 
     public int getId() {
         return Id;

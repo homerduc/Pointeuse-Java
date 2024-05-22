@@ -29,4 +29,8 @@ public class Planning {
         Start = start;
         End = end;
     }
+    @Override
+    public String toString() {
+        return Start + " - "+End;
+    }
 }
