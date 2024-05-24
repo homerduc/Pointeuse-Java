@@ -15,8 +15,8 @@
                 <TableColumn fx:id="ID" prefWidth="75.0" text="ID" />
                 <TableColumn fx:id="FULLNAME" prefWidth="75.0" text="NAME" />
                 <TableColumn fx:id="planning" prefWidth="75.0" text="SCHEDULE" />
-                <TableColumn prefWidth="75.0" text="CHECH-IN" />
-                <TableColumn prefWidth="75.0" text="CHECK-OUT" />
+                <TableColumn fx:id="CHECKIN" prefWidth="75.0" text="CHECHIN" />
+                <TableColumn fx:id="CHECKOUT" prefWidth="75.0" text="CHECKOUT" />
             </columns>
             <columnResizePolicy>
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -24,12 +24,12 @@
         </TableView>
         <ToolBar layoutX="2.0" prefHeight="40.0" prefWidth="900.0" AnchorPane.bottomAnchor="560.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
-                <Button mnemonicParsing="false" text="Checked" />
-                <Button mnemonicParsing="false" text="Unchecked" />
                 <Button mnemonicParsing="false" text="History" />
                 <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="66.0" text="Today" />
                 <TextField promptText="Research" />
                 <ComboBox prefHeight="26.0" prefWidth="154.0" promptText="BY" />
+            <Button fx:id="Info_but" mnemonicParsing="false" onAction="#setInfo_but" text="Selection Informations" />
+            <Button fx:id="BUT_Refresh_Table_Colors" mnemonicParsing="false" onAction="#setBUT_Refresh_Table_Colors" text="Refresh Table Colors" />
             </items>
         </ToolBar>
     </children>

@@ -7,8 +7,9 @@
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: 75bb99;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.EmployeeManagement">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-radius: 50;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.EmployeeManagement">
     <children>
+        <TextField fx:id="searchField" promptText="Rechercher..." />
         <TableView fx:id="Table_EM" layoutX="16.0" layoutY="69.0" prefHeight="462.0" prefWidth="866.0" AnchorPane.bottomAnchor="68.60000000000002" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="17.600000000000023" AnchorPane.topAnchor="68.80000000000007">
             <columns>
                 <TableColumn fx:id="col_id" prefWidth="99.19997882843018" text="ID" />
