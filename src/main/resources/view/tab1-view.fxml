@@ -24,11 +24,9 @@
         </TableView>
         <ToolBar layoutX="2.0" prefHeight="40.0" prefWidth="900.0" AnchorPane.bottomAnchor="560.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
-                <TextField fx:id="reserch_field" promptText="Research" />
+                <TextField fx:id="reserch_field" onAction="#UpdateTable" promptText="Research" />
             <Button fx:id="Info_but" mnemonicParsing="false" onAction="#setInfo_but" text="Selection Informations" />
-            <Button fx:id="BUT_Refresh_Table_Colors" mnemonicParsing="false"  text="Refresh Table Colors" />
-            <RadioButton fx:id="Raduibouton_couleur" mnemonicParsing="false"  text="ADD COLOR" />
-            <RadioButton mnemonicParsing="false" text="NO COLOR" />
+            <RadioButton fx:id="Raduibouton_couleur" mnemonicParsing="false" onAction="#handleRadioButtonAction" text="ADD COLOR" />
             </items>
         </ToolBar>
     </children>

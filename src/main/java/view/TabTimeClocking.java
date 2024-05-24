@@ -1,5 +1,9 @@
 package view;
-
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.util.Duration;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
@@ -22,7 +26,6 @@ public class TabTimeClocking implements Initializable {
 
     public Button Info_but;
 
-    public Button BUT_Refresh_Table_Colors;
 
     public TextField reserch_field;
     @FXML
@@ -46,6 +49,8 @@ public class TabTimeClocking implements Initializable {
 
     private FilteredList<Employee> filteredList;
 
+    private Timeline timeline;
+
     public void UpdateTable() {
         listemployee = EmployeeData.getEmployeeList();
         FilteredList<Employee> filtreliste = new FilteredList<>(listemployee);
@@ -56,7 +61,7 @@ public class TabTimeClocking implements Initializable {
                 if( newValue.isEmpty() || newValue == null|| newValue.isBlank()){
 
                     Info_but.setDisable(false);
-                    BUT_Refresh_Table_Colors.setDisable(false);
+
                     return true;
                 }
 
@@ -64,19 +69,19 @@ public class TabTimeClocking implements Initializable {
                 if (employee.getFirstName().toLowerCase().indexOf(lowercaseFilter)>-1)
                 {
                     Info_but.setDisable(true);
-                    BUT_Refresh_Table_Colors.setDisable(true);
+
                     return true;
                 }
                 else if (employee.getLastName().toLowerCase().indexOf(lowercaseFilter)>-1)
                 {
                     Info_but.setDisable(true);
-                    BUT_Refresh_Table_Colors.setDisable(true);
+
                     return true;
                 }
                 else if (String.valueOf(employee.getId()).indexOf(lowercaseFilter)>-1)
                 {
                     Info_but.setDisable(true);
-                    BUT_Refresh_Table_Colors.setDisable(true);
+
 
                     return true;
                 }
@@ -129,11 +134,24 @@ public class TabTimeClocking implements Initializable {
     @FXML
     public void handleRadioButtonAction() {
         if(Raduibouton_couleur.isSelected()){
-            Couleurs();
+
+            EventHandler<ActionEvent> eventHandler = event -> {
+                Couleurs();
+            };
+            KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.3), eventHandler);
+            timeline = new Timeline(keyFrame);
+            timeline.setCycleCount(Timeline.INDEFINITE);
+            timeline.play();
         }
         else
         {
             refresh();
+            stopTimeline();
+        }
+    }
+    public void stopTimeline() {
+        if (timeline != null) {
+            timeline.stop();
         }
     }
 
