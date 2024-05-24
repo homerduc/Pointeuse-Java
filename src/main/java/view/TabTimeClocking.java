@@ -3,6 +3,8 @@ package view;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,6 +23,8 @@ public class TabTimeClocking implements Initializable {
     public Button Info_but;
 
     public Button BUT_Refresh_Table_Colors;
+
+    public TextField reserch_field;
     @FXML
     private TableView<Employee> Table;
     @FXML
@@ -36,18 +40,58 @@ public class TabTimeClocking implements Initializable {
     @FXML
     private TextField Reherche;
     @FXML
-    private Button history;
-    @FXML
-    private Button today;
-
-    @FXML
-    private ComboBox<?> filtres;
+    private RadioButton Raduibouton_couleur;
 
     private ObservableList<Employee> listemployee;
 
+    private FilteredList<Employee> filteredList;
+
     public void UpdateTable() {
         listemployee = EmployeeData.getEmployeeList();
-        Table.setItems(listemployee);
+        FilteredList<Employee> filtreliste = new FilteredList<>(listemployee);
+        reserch_field.textProperty().addListener((observable, oldValue,newValue)->{
+            filtreliste.setPredicate(employee -> {
+
+                Table.refresh();
+                if( newValue.isEmpty() || newValue == null|| newValue.isBlank()){
+
+                    Info_but.setDisable(false);
+                    BUT_Refresh_Table_Colors.setDisable(false);
+                    return true;
+                }
+
+                String lowercaseFilter = newValue.toLowerCase();
+                if (employee.getFirstName().toLowerCase().indexOf(lowercaseFilter)>-1)
+                {
+                    Info_but.setDisable(true);
+                    BUT_Refresh_Table_Colors.setDisable(true);
+                    return true;
+                }
+                else if (employee.getLastName().toLowerCase().indexOf(lowercaseFilter)>-1)
+                {
+                    Info_but.setDisable(true);
+                    BUT_Refresh_Table_Colors.setDisable(true);
+                    return true;
+                }
+                else if (String.valueOf(employee.getId()).indexOf(lowercaseFilter)>-1)
+                {
+                    Info_but.setDisable(true);
+                    BUT_Refresh_Table_Colors.setDisable(true);
+
+                    return true;
+                }
+                else{
+
+                    return false;
+                }
+
+            });
+        });
+        SortedList<Employee> SortedData = new SortedList<>(filtreliste);
+        SortedData.comparatorProperty().bind(Table.comparatorProperty());
+
+        Table.setItems(SortedData);
+
     }
 
     @Override
@@ -66,7 +110,7 @@ public class TabTimeClocking implements Initializable {
         });
         CHECKIN.setCellValueFactory(new PropertyValueFactory<Employee, CheckBox>("Check_in"));
         CHECKOUT.setCellValueFactory(new PropertyValueFactory<Employee, CheckBox>("Check_out"));
-
+        Raduibouton_couleur.setOnAction(event -> handleRadioButtonAction());
 
         UpdateTable();
     }
@@ -79,25 +123,53 @@ public class TabTimeClocking implements Initializable {
                 search.toString();
             }
         }
+
     }
 
     @FXML
-    public void setBUT_Refresh_Table_Colors(ActionEvent event) {
-        for (Employee employee : listemployee) {
-            if (employee.getCheck_in().isSelected() && employee.getCheck_out().isSelected())
+    public void handleRadioButtonAction() {
+        if(Raduibouton_couleur.isSelected()){
+            Couleurs();
+        }
+        else
+        {
+            refresh();
+        }
+    }
+
+    @FXML
+    public void Couleurs(){
+        for (Employee employee : Table.getItems())
+        {
+
+            if (employee == null)
             {
-                employee.getCheck_in().getParent().setStyle("-fx-background-color: green;");
-                employee.getCheck_out().getParent().setStyle("-fx-background-color: green;");
-            } else if (employee.getCheck_in().isSelected())
-            {
-                employee.getCheck_in().getParent().setStyle("-fx-background-color: orange;");
-                employee.getCheck_out().getParent().setStyle("-fx-background-color: orange;");
+                employee.getCheck_in().getParent().setStyle("-fx-background-color: white");
+                employee.getCheck_out().getParent().setStyle("-fx-background-color: white");
             }
-            else{
-                employee.getCheck_in().getParent().setStyle("-fx-background-color: red;");
-                employee.getCheck_out().getParent().setStyle("-fx-background-color: red;");
+            else if (employee.getCheck_in().isSelected() && employee.getCheck_out().isSelected())
+            {
+                employee.getCheck_in().getParent().setStyle("-fx-background-color: green");
+                employee.getCheck_out().getParent().setStyle("-fx-background-color: green");
+            }
+            else if (employee.getCheck_in().isSelected())
+            {
+                employee.getCheck_in().getParent().setStyle("-fx-background-color: orange");
+                employee.getCheck_out().getParent().setStyle("-fx-background-color: orange");
+            } else if(!employee.getCheck_in().isSelected() && !employee.getCheck_out().isSelected())
+            {
+                employee.getCheck_in().getParent().setStyle("-fx-background-color: red");
+                employee.getCheck_out().getParent().setStyle("-fx-background-color: red");
             }
         }
     }
+
+    @FXML
+    public void refresh(){
+        Table.refresh();
+    }
+
+
+
 
 }
