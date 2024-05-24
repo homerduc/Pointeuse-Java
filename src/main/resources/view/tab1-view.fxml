@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
@@ -7,26 +8,58 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TabTimeClocking">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #75bb99; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TabTimeClocking">
     <children>
-        <TableView fx:id="Table" layoutX="32.0" layoutY="57.0" prefHeight="502.0" prefWidth="838.0" AnchorPane.bottomAnchor="40.60000000000002" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="29.600000000000023">
+        <TableView fx:id="Table" layoutX="32.0" layoutY="57.0" prefHeight="502.0" prefWidth="838.0" style="-fx-background-color: #d9d9d9;" AnchorPane.bottomAnchor="40.60000000000002" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="29.600000000000023">
             <columns>
-                <TableColumn fx:id="ID" prefWidth="75.0" text="ID" />
-                <TableColumn fx:id="FULLNAME" prefWidth="75.0" text="NAME" />
-                <TableColumn fx:id="planning" prefWidth="75.0" text="SCHEDULE" />
-                <TableColumn fx:id="CHECKIN" prefWidth="75.0" text="CHECHIN" />
-                <TableColumn fx:id="CHECKOUT" prefWidth="75.0" text="CHECKOUT" />
+                <TableColumn fx:id="ID" prefWidth="75.0" style="-fx-background-radius: 20;" text="ID" />
+                <TableColumn fx:id="FULLNAME" prefWidth="75.0" style="-fx-background-radius: 20;" text="NAME" />
+                <TableColumn fx:id="planning" prefWidth="75.0" style="-fx-background-radius: 20;" text="SCHEDULE" />
+                <TableColumn fx:id="CHECKIN" prefWidth="75.0" style="-fx-background-radius: 20;" text="CHECHIN" />
+                <TableColumn fx:id="CHECKOUT" prefWidth="75.0" style="-fx-background-radius: 20;" text="CHECKOUT" />
             </columns>
             <columnResizePolicy>
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
             </columnResizePolicy>
         </TableView>
-        <ToolBar layoutX="2.0" prefHeight="40.0" prefWidth="900.0" AnchorPane.bottomAnchor="560.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <ToolBar prefHeight="40.0" prefWidth="900.0" style="-fx-background-color: #75bb99;" AnchorPane.bottomAnchor="560.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <items>
                 <TextField fx:id="reserch_field" onAction="#UpdateTable" promptText="Research" />
-            <Button fx:id="Info_but" mnemonicParsing="false" onAction="#setInfo_but" text="Selection Informations" />
-            <RadioButton fx:id="Raduibouton_couleur" mnemonicParsing="false" onAction="#handleRadioButtonAction" text="ADD COLOR" />
+            <Button fx:id="Info_but" mnemonicParsing="false" onAction="#setInfo_but" style="-fx-background-radius: 15;" text="Selection Informations">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor></Button>
+            <RadioButton fx:id="Raduibouton_couleur" mnemonicParsing="false" onAction="#handleRadioButtonAction" style="-fx-alignment: center; -fx-background-radius: 20; -fx-border-radius: 20;" text="ADD COLOR">
+               <textFill>
+                  <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.3993288590604026">
+                           <color>
+                              <Color green="0.8666666746139526" blue="1.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.7651006711409396">
+                           <color>
+                              <Color red="0.800000011920929" blue="1.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.800000011920929" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill></RadioButton>
             </items>
         </ToolBar>
     </children>
