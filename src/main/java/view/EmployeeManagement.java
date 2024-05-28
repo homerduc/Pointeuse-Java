@@ -12,6 +12,7 @@ import model.Planning;
 
 import java.net.URL;
 import java.time.LocalTime;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class EmployeeManagement implements Initializable {
@@ -106,8 +107,37 @@ public class EmployeeManagement implements Initializable {
 
     @FXML
     void setBut_suppr(ActionEvent event) {
-        int selectedID = Table_EM.getSelectionModel().getSelectedIndex();
-        Table_EM.getItems().remove(selectedID);
-        list_employee.removeIf(employee -> employee.getId() == selectedID + 1);
+        list_employee.remove(Table_EM.getSelectionModel().getSelectedItem());
+    }
+
+    @FXML
+    void setBut_modif(){
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText(null);
+        alert.setContentText("Voulez-vous continuer?");
+        ButtonType buttonYes = new ButtonType("Oui");
+        ButtonType buttonNo = new ButtonType("Non");
+        alert.getButtonTypes().setAll(buttonYes, buttonNo);
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.isPresent() && result.get() == buttonYes) {
+
+            Employee selected_employee = Table_EM.getSelectionModel().getSelectedItem();
+
+            selected_employee.setFirstName(text_firstname.getText());
+            selected_employee.setLastName(text_lastname.getText());
+            selected_employee.setPost(text_post.getText());
+            selected_employee.setMail(text_email.getText());
+            selected_employee.setTel(text_tel.getText());
+            selected_employee.setDeltaWorkTime(Integer.parseInt(text_delta.getText()));
+
+            Table_EM.refresh();
+            UpdateTable();
+            System.out.println("l'ADMIN a cliqué sur Oui.");
+        } else {
+            System.out.println("l'ADMIN a cliqué sur Non.");
+        }
     }
 }
