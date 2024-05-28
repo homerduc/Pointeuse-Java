@@ -19,6 +19,8 @@ public class EmployeeManagement implements Initializable {
 
     public TextField searchField;
     @FXML
+    public Button but_clear;
+    @FXML
     private TableView<Employee> Table_EM;
     @FXML
     private Button but_add;
@@ -64,6 +66,19 @@ public class EmployeeManagement implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         list_employee = EmployeeData.getEmployeeList();
+
+        Table_EM.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                text_id.setText(String.valueOf(newValue.getId()));
+                text_firstname.setText(newValue.getFirstName());
+                text_lastname.setText(newValue.getLastName());
+                text_post.setText(newValue.getPost());
+                text_email.setText(newValue.getMail());
+                text_tel.setText(newValue.getTel());
+                text_delta.setText(String.valueOf(newValue.getDeltaWorkTime()));
+            }
+        });
+        text_id.setEditable(false);
         UpdateTable();
     }
 
@@ -78,14 +93,12 @@ public class EmployeeManagement implements Initializable {
         col_planning.setCellValueFactory(new PropertyValueFactory<Employee, String>("Planning"));
         Table_EM.setItems(list_employee);
 
-
     }
 
     @FXML
     void setBut_add() {
-        int newId = EmployeeData.getNextId();
         Employee new_employee = new Employee(
-                newId,
+                EmployeeData.getNextId(),
                 text_firstname.getText(),
                 text_lastname.getText(),
                 text_post.getText(),
@@ -96,13 +109,7 @@ public class EmployeeManagement implements Initializable {
         );
         list_employee.add(new_employee);
         UpdateTable();
-        text_id.clear();
-        text_firstname.clear();
-        text_lastname.clear();
-        text_post.clear();
-        text_email.clear();
-        text_tel.clear();
-        text_delta.clear();
+        clear_textfields();
     }
 
     @FXML
@@ -139,5 +146,16 @@ public class EmployeeManagement implements Initializable {
         } else {
             System.out.println("l'ADMIN a cliqué sur Non.");
         }
+    }
+
+    @FXML
+    void clear_textfields(){
+        text_id.clear();
+        text_firstname.clear();
+        text_lastname.clear();
+        text_post.clear();
+        text_email.clear();
+        text_tel.clear();
+        text_delta.clear();
     }
 }
