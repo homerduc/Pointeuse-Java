@@ -1,4 +1,4 @@
-package view;
+package serialization;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,6 +19,7 @@ public class EmployeeData {
     public static ObservableList<Employee> getEmployeeList() {
         return employeeList;
     }
+
     public static int getNextId() {
         if (employeeList.isEmpty()) {
             return 1;

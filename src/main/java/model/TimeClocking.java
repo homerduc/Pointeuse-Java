@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class TimeClocking {
+public class TimeClocking implements Serializable {
 
     private LocalDateTime DateTime ;
     private Employee employee ;
