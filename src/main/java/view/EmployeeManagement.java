@@ -7,7 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Employee;
-import view.EmployeeData;
+import serialization.EmployeeData;
 import model.Planning;
 
 import java.net.URL;
