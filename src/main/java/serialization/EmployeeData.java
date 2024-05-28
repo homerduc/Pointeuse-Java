@@ -8,13 +8,21 @@ import model.Planning;
 import java.time.LocalTime;
 
 public abstract class EmployeeData {
-    private static ObservableList<Employee> employeeList = Deserializer.deserializeEmployes("C:\\!Polytech\\Cycle ingé\\Semestre 6\\JAVA\\SauvegardeProjet.ser");
 
+    private static ObservableList<Employee> employeeList = FXCollections.observableArrayList(
+            new Employee(1,"michel","fromage","cadre","michel.fromage@gmail.com","0625487962",12,new Planning(LocalTime.of(8, 0), LocalTime.of(17, 0))),
+            new Employee(2,"michel","boulet","cadre","michel.fromage@gmail.com","2536145869",12, new Planning(LocalTime.of(8, 0), LocalTime.of(17, 0))),
+            new Employee(3,"paula","moret","employe","paula.moret@gmail.com","1425369685",5, new Planning(LocalTime.of(8, 0), LocalTime.of(17, 0))),
+            new Employee(4,"marcel","brique","employe","marcel.brique@gmail.com","0230215456",2, new Planning(LocalTime.of(8, 0), LocalTime.of(17, 0))),
+            new Employee(5,"christine","chapeau","cadre","christine.chapeau@gmail.com","5456892123",12, new Planning(LocalTime.of(8, 0), LocalTime.of(17, 0)))
+    );
+
+    //region GETTER & SETTER
     public static ObservableList<Employee> getEmployeeList() {return employeeList;}
     public static void setEmployeeList(ObservableList<Employee> list) {employeeList=list;}
-
     public static int getNextId() {
         if (employeeList.isEmpty()) {
+            Employee New = new Employee(1,"Admin","Admin","Admin","Admin","Admin",0,new Planning(LocalTime.of(8, 0), LocalTime.of(17, 0)));
             return 1;
         }
         int maxId = employeeList.stream()
@@ -30,14 +38,17 @@ public abstract class EmployeeData {
         }
         return maxId + 1;
     }
+    //endregion GETTER & SETTER
 
-    public static void addEmployee(Employee NewEmployee){
-        employeeList.add(NewEmployee);
-        Serializer.serializeEmployees(employeeList,"C:\\!Polytech\\Cycle ingé\\Semestre 6\\JAVA\\SauvegardeProjet.ser");
+    //region BOUTONS
+    public static void addEmployee(String first,String last,String post,String email,String tel, int delta){
+
+        Employee newEmployee = new Employee(EmployeeData.getNextId(), first, last, post, email, tel, delta, new Planning(LocalTime.of(8, 0), LocalTime.of(17, 0)));
+        employeeList.add(newEmployee);
     }
     public static void removeEmployee(Employee rmEmployee){
         employeeList.remove(rmEmployee);
-        Serializer.serializeEmployees(employeeList,"C:\\!Polytech\\Cycle ingé\\Semestre 6\\JAVA\\SauvegardeProjet.ser");
+
     }
     public static void modifyEmployee(Employee employee,String first,String last,String post,String email,String tel, int delta){
         employee.setFirstName(first);
@@ -46,6 +57,11 @@ public abstract class EmployeeData {
         employee.setMail(email);
         employee.setTel(tel);
         employee.setDeltaWorkTime(delta);
-        Serializer.serializeEmployees(employeeList,"C:\\!Polytech\\Cycle ingé\\Semestre 6\\JAVA\\SauvegardeProjet.ser");
+
+    }
+    //endregion
+
+    public static void updateFile(){
+        Serializer.serializeEmployees(employeeList,"SauvegardeProjet.ser");
     }
 }

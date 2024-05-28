@@ -1,7 +1,6 @@
 package model;
 
 import javafx.scene.control.CheckBox;
-import view.TabTimeClocking;
 
 import java.time.LocalTime;
 

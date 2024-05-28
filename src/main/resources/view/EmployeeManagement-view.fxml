@@ -7,8 +7,9 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="938.0" style="-fx-background-color: #75bb99; -fx-border-color: #75bb99;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.EmployeeManagement">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #75bb99; -fx-border-color: #75bb99;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.EmployeeManagement">
     <children>
         <TextField fx:id="searchField" promptText="Rechercher..." />
         <TableView fx:id="Table_EM" editable="true" layoutX="19.2" layoutY="72.8" prefHeight="500.0" prefWidth="862.0" style="-fx-background-color: #d9d9d9;" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="72.0">
@@ -38,11 +39,13 @@
             <TextField fx:id="text_email" prefHeight="26.0" prefWidth="100.0" promptText="EMAIL" style="-fx-alignment: center;" />
             <TextField fx:id="text_tel" prefHeight="26.0" prefWidth="100.0" promptText="TEL" style="-fx-alignment: center;" />
             <TextField fx:id="text_delta" prefHeight="26.0" prefWidth="100.0" promptText="DELTA" style="-fx-alignment: center;" />
-            <Button fx:id="but_clear" mnemonicParsing="false" onAction="#clear_textfields" prefHeight="27.0" prefWidth="58.0" text="← Clear" />
+            <Button fx:id="but_clear" mnemonicParsing="false" onAction="#clearTextfields" prefHeight="27.0" prefWidth="58.0" text="← Clear" />
                 <Button fx:id="but_add" alignment="CENTER" mnemonicParsing="false" onAction="#setBut_add" prefWidth="52.0" style="-fx-background-color: #0aaaa0;" text="Add" />
                 <Button fx:id="but_suppr" mnemonicParsing="false" onAction="#setBut_suppr" style="-fx-background-color: #aa0a0a;" text="Suppr" textFill="WHITE" />
                 <Button fx:id="but_modif" mnemonicParsing="false" onAction="#setBut_modif" text="modify" />
+            <Button fx:id="butCommit" mnemonicParsing="false" onAction="#setButCommit" text="commit" />
          </items>
       </ToolBar>
+      <Text fontSmoothingType="LCD" layoutX="721.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="do not forget if any modification of the table ↑" textAlignment="JUSTIFY" underline="true" />
     </children>
 </AnchorPane>

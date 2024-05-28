@@ -18,9 +18,9 @@ import model.Planning;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TabTimeClocking implements Initializable {
+public class TodayClocking implements Initializable {
 
-    private static TabTimeClocking instance;
+    private static TodayClocking instance;
 
     public Button Info_but;
 
@@ -93,7 +93,7 @@ public class TabTimeClocking implements Initializable {
         SortedList<Employee> SortedData = new SortedList<>(filtreliste);
         SortedData.comparatorProperty().bind(Table.comparatorProperty());
 
-        Table.setItems(SortedData);
+        Table.setItems(SortedData);//|listemployee
 
     }
 

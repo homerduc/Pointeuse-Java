@@ -1,5 +1,4 @@
 package view;
-
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,18 +7,18 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Employee;
 import serialization.EmployeeData;
-import model.Planning;
 
 import java.net.URL;
-import java.time.LocalTime;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
 public class EmployeeManagement implements Initializable {
 
+    //region ATTRIBUTS
     public TextField searchField;
     @FXML
     public Button but_clear;
+    @FXML
+    public Button butCommit;
     @FXML
     private TableView<Employee> Table_EM;
     @FXML
@@ -62,6 +61,7 @@ public class EmployeeManagement implements Initializable {
     private TextField text_delta;
 
     private ObservableList<Employee> list_employee;
+    //endregion
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -92,32 +92,21 @@ public class EmployeeManagement implements Initializable {
         col_delta.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("DeltaWorkTime"));
         col_planning.setCellValueFactory(new PropertyValueFactory<Employee, String>("Planning"));
         Table_EM.setItems(list_employee);
-
     }
 
+    //region BOUTONS
     @FXML
     void setBut_add() {
-        Employee new_employee = new Employee(
-                EmployeeData.getNextId(),
-                text_firstname.getText(),
-                text_lastname.getText(),
-                text_post.getText(),
-                text_email.getText(),
-                text_tel.getText(),
-                Integer.parseInt(text_delta.getText()),
-                new Planning(LocalTime.of(8, 0), LocalTime.of(17, 0))
-        );
-        EmployeeData.addEmployee(new_employee);
-        UpdateTable();
-        clear_textfields();
-    }
 
+        EmployeeData.addEmployee(text_firstname.getText(),text_lastname.getText(),text_post.getText(),text_email.getText(),text_tel.getText(),Integer.parseInt(text_delta.getText()));
+        UpdateTable();
+        clearTextfields();
+    }
     @FXML
     void setBut_suppr(ActionEvent event) {
         EmployeeData.removeEmployee(Table_EM.getSelectionModel().getSelectedItem());
         UpdateTable();
     }
-
     @FXML
     void setBut_modif(){
 
@@ -149,9 +138,8 @@ public class EmployeeManagement implements Initializable {
         }
         UpdateTable();
     }
-
     @FXML
-    void clear_textfields(){
+    void clearTextfields(){
         text_id.clear();
         text_firstname.clear();
         text_lastname.clear();
@@ -160,4 +148,10 @@ public class EmployeeManagement implements Initializable {
         text_tel.clear();
         text_delta.clear();
     }
+
+    @FXML
+    void setButCommit(){
+        EmployeeData.updateFile();
+    }
+    //endregion
 }
