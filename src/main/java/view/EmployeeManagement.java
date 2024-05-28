@@ -107,14 +107,15 @@ public class EmployeeManagement implements Initializable {
                 Integer.parseInt(text_delta.getText()),
                 new Planning(LocalTime.of(8, 0), LocalTime.of(17, 0))
         );
-        list_employee.add(new_employee);
+        EmployeeData.addEmployee(new_employee);
         UpdateTable();
         clear_textfields();
     }
 
     @FXML
     void setBut_suppr(ActionEvent event) {
-        list_employee.remove(Table_EM.getSelectionModel().getSelectedItem());
+        EmployeeData.removeEmployee(Table_EM.getSelectionModel().getSelectedItem());
+        UpdateTable();
     }
 
     @FXML
@@ -131,21 +132,22 @@ public class EmployeeManagement implements Initializable {
 
         if (result.isPresent() && result.get() == buttonYes) {
 
-            Employee selected_employee = Table_EM.getSelectionModel().getSelectedItem();
-
-            selected_employee.setFirstName(text_firstname.getText());
-            selected_employee.setLastName(text_lastname.getText());
-            selected_employee.setPost(text_post.getText());
-            selected_employee.setMail(text_email.getText());
-            selected_employee.setTel(text_tel.getText());
-            selected_employee.setDeltaWorkTime(Integer.parseInt(text_delta.getText()));
-
+            EmployeeData.modifyEmployee(Table_EM.getSelectionModel().getSelectedItem(),
+                    text_firstname.getText(),
+                    text_lastname.getText(),
+                    text_post.getText(),
+                    text_email.getText(),
+                    text_tel.getText(),
+                    Integer.parseInt(text_delta.getText())
+            );
             Table_EM.refresh();
             UpdateTable();
+
             System.out.println("l'ADMIN a cliqué sur Oui.");
         } else {
             System.out.println("l'ADMIN a cliqué sur Non.");
         }
+        UpdateTable();
     }
 
     @FXML
