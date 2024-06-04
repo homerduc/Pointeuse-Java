@@ -1,5 +1,4 @@
 package view;
-
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,17 +6,19 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Employee;
-import view.EmployeeData;
-import model.Planning;
+import serialization.EmployeeData;
 
 import java.net.URL;
-import java.time.LocalTime;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
 public class EmployeeManagement implements Initializable {
 
+    //region ATTRIBUTS
     public TextField searchField;
+    @FXML
+    public Button but_clear;
+    @FXML
+    public Button butCommit;
     @FXML
     private TableView<Employee> Table_EM;
     @FXML
@@ -60,10 +61,24 @@ public class EmployeeManagement implements Initializable {
     private TextField text_delta;
 
     private ObservableList<Employee> list_employee;
+    //endregion
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         list_employee = EmployeeData.getEmployeeList();
+
+        Table_EM.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                text_id.setText(String.valueOf(newValue.getId()));
+                text_firstname.setText(newValue.getFirstName());
+                text_lastname.setText(newValue.getLastName());
+                text_post.setText(newValue.getPost());
+                text_email.setText(newValue.getMail());
+                text_tel.setText(newValue.getTel());
+                text_delta.setText(String.valueOf(newValue.getDeltaWorkTime()));
+            }
+        });
+        text_id.setEditable(false);
         UpdateTable();
     }
 
@@ -77,39 +92,21 @@ public class EmployeeManagement implements Initializable {
         col_delta.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("DeltaWorkTime"));
         col_planning.setCellValueFactory(new PropertyValueFactory<Employee, String>("Planning"));
         Table_EM.setItems(list_employee);
-
-
     }
 
+    //region BOUTONS
     @FXML
     void setBut_add() {
-        int newId = EmployeeData.getNextId();
-        Employee new_employee = new Employee(
-                newId,
-                text_firstname.getText(),
-                text_lastname.getText(),
-                text_post.getText(),
-                text_email.getText(),
-                text_tel.getText(),
-                Integer.parseInt(text_delta.getText()),
-                new Planning(LocalTime.of(8, 0), LocalTime.of(17, 0))
-        );
-        list_employee.add(new_employee);
-        UpdateTable();
-        text_id.clear();
-        text_firstname.clear();
-        text_lastname.clear();
-        text_post.clear();
-        text_email.clear();
-        text_tel.clear();
-        text_delta.clear();
-    }
 
+        EmployeeData.addEmployee(text_firstname.getText(),text_lastname.getText(),text_post.getText(),text_email.getText(),text_tel.getText(),Integer.parseInt(text_delta.getText()));
+        UpdateTable();
+        clearTextfields();
+    }
     @FXML
     void setBut_suppr(ActionEvent event) {
-        list_employee.remove(Table_EM.getSelectionModel().getSelectedItem());
+        EmployeeData.removeEmployee(Table_EM.getSelectionModel().getSelectedItem());
+        UpdateTable();
     }
-
     @FXML
     void setBut_modif(){
 
@@ -124,20 +121,37 @@ public class EmployeeManagement implements Initializable {
 
         if (result.isPresent() && result.get() == buttonYes) {
 
-            Employee selected_employee = Table_EM.getSelectionModel().getSelectedItem();
-
-            selected_employee.setFirstName(text_firstname.getText());
-            selected_employee.setLastName(text_lastname.getText());
-            selected_employee.setPost(text_post.getText());
-            selected_employee.setMail(text_email.getText());
-            selected_employee.setTel(text_tel.getText());
-            selected_employee.setDeltaWorkTime(Integer.parseInt(text_delta.getText()));
-
+            EmployeeData.modifyEmployee(Table_EM.getSelectionModel().getSelectedItem(),
+                    text_firstname.getText(),
+                    text_lastname.getText(),
+                    text_post.getText(),
+                    text_email.getText(),
+                    text_tel.getText(),
+                    Integer.parseInt(text_delta.getText())
+            );
             Table_EM.refresh();
             UpdateTable();
+
             System.out.println("l'ADMIN a cliqué sur Oui.");
         } else {
             System.out.println("l'ADMIN a cliqué sur Non.");
         }
+        UpdateTable();
     }
+    @FXML
+    void clearTextfields(){
+        text_id.clear();
+        text_firstname.clear();
+        text_lastname.clear();
+        text_post.clear();
+        text_email.clear();
+        text_tel.clear();
+        text_delta.clear();
+    }
+
+    @FXML
+    void setButCommit(){
+        EmployeeData.updateFile();
+    }
+    //endregion
 }

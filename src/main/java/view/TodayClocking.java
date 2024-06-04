@@ -5,11 +5,9 @@ import javafx.util.Duration;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -20,9 +18,9 @@ import model.Planning;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TabTimeClocking implements Initializable {
+public class TodayClocking implements Initializable {
 
-    private static TabTimeClocking instance;
+    private static TodayClocking instance;
 
     public Button Info_but;
 
@@ -52,7 +50,7 @@ public class TabTimeClocking implements Initializable {
     private Timeline timeline;
 
     public void UpdateTable() {
-        listemployee = EmployeeData.getEmployeeList();
+        listemployee = serialization.EmployeeData.getEmployeeList();
         FilteredList<Employee> filtreliste = new FilteredList<>(listemployee);
         reserch_field.textProperty().addListener((observable, oldValue,newValue)->{
             filtreliste.setPredicate(employee -> {
@@ -95,7 +93,7 @@ public class TabTimeClocking implements Initializable {
         SortedList<Employee> SortedData = new SortedList<>(filtreliste);
         SortedData.comparatorProperty().bind(Table.comparatorProperty());
 
-        Table.setItems(SortedData);
+        Table.setItems(SortedData);//|listemployee
 
     }
 
