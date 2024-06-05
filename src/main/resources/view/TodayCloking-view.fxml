@@ -12,7 +12,7 @@
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #75bb99; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TabTimeClocking">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #75bb99; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TodayClocking">
     <children>
         <TableView fx:id="Table" layoutX="32.0" layoutY="57.0" prefHeight="502.0" prefWidth="838.0" style="-fx-background-color: #d9d9d9;" AnchorPane.bottomAnchor="40.60000000000002" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="29.600000000000023">
             <columns>
