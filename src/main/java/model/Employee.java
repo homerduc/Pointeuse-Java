@@ -18,7 +18,7 @@ public class Employee implements Serializable {
     private Boolean Check_in;
     private Boolean Check_out;
 
-    public Employee(int id, String firstName, String lastName, String post, String mail, String tel , int DeltaWorkTime, Planning planning) {
+    public Employee(int id, String firstName, String lastName, String post, String mail, String tel , int delta, Planning planning) {
         Id = id;
         FirstName = firstName;
         LastName = lastName;
@@ -27,24 +27,26 @@ public class Employee implements Serializable {
         Tel = tel;
         LocalTime DateD =LocalTime.of(8,0);
         LocalTime DateF =LocalTime.of(17,0);
-        this.DeltaWorkTime = 0;
+        DeltaWorkTime = delta;
         this.planning = new Planning(DateD,DateF);
         Check_in = false;
         Check_out = false;
-//        this.Check_in = new CheckBox();
-//        this.Check_in.setSelected(false);
-//        this.Check_out= new CheckBox();
-//        this.Check_out.setSelected(false);
-//        this.Check_out.setDisable(true);
 
-//        this.Check_in.selectedProperty().addListener((observable, oldValue, newValue) -> {
-//            if (newValue) {
-//                Check_out.setDisable(false);
-//            } else {
-//                Check_out.setDisable(true);
-//                Check_out.setSelected(false);
-//            }
-//        });
+        /*
+        this.Check_in = new CheckBox();
+        this.Check_in.setSelected(false);
+        this.Check_out= new CheckBox();
+        this.Check_out.setSelected(false);
+        this.Check_out.setDisable(true);
+
+        this.Check_in.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                Check_out.setDisable(false);
+            } else {
+                Check_out.setDisable(true);
+                Check_out.setSelected(false);
+            }
+        });*/
     }
 
     public void setId(int id) {

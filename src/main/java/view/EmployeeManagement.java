@@ -154,5 +154,4 @@ public class EmployeeManagement implements Initializable {
         text_delta.clear();
     }
 
-
 }
