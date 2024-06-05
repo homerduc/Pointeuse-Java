@@ -4,21 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31f36524-3413-4fb2-99be-b101b0533f32" name="Changes" comment="• Maj">
-      <change afterPath="$PROJECT_DIR$/SauvegardeProjet.ser" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/SauvegardeProjet.ser" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/HistoryOfAllTime.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/view/HistoryOfAllTime-view.fxml" afterDir="false" />
+    <list default="true" id="31f36524-3413-4fb2-99be-b101b0533f32" name="Changes" comment="• ajout classe + view &#10;• ajout boutton commit dans la vu EmployeeManagement">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SauvegardeProjet.ser" beforeDir="false" afterPath="$PROJECT_DIR$/SauvegardeProjet.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/serialization/EmployeeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/serialization/EmployeeData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/serialization/Deserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/serialization/Deserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/serialization/Serializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/serialization/Serializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/EmployeeManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/EmployeeManagement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/TabTimeClocking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/TodayClocking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/ViewApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/ViewApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/EmployeeManagement-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/EmployeeManagement-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/main-pane-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/main-pane-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/tab1-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/TodayCloking-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/TodayClocking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/TodayClocking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/TodayCloking-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/TodayCloking-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +73,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ghesq/AppData/Local/SceneBuilder/SceneBuilder.exe&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ghesq/IdeaProjects/Pointeuse-Java&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -207,7 +201,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716913064839</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="• ajout classe + view &#10;• ajout boutton commit dans la vu EmployeeManagement">
+      <option name="closed" value="true" />
+      <created>1716920071610</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1716920071610</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,7 +237,8 @@
     <MESSAGE value="• Mise a jour du graphisme de la page" />
     <MESSAGE value="first" />
     <MESSAGE value="• Maj" />
-    <option name="LAST_COMMIT_MESSAGE" value="• Maj" />
+    <MESSAGE value="• ajout classe + view &#10;• ajout boutton commit dans la vu EmployeeManagement" />
+    <option name="LAST_COMMIT_MESSAGE" value="• ajout classe + view &#10;• ajout boutton commit dans la vu EmployeeManagement" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -253,6 +256,11 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="4" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/serialization/EmployeeData.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

@@ -153,5 +153,4 @@ public class EmployeeManagement implements Initializable {
     void setButCommit(){
         EmployeeData.updateFile();
     }
-    //endregion
 }

@@ -1,10 +1,12 @@
 package model;
 
+import javafx.beans.binding.BooleanExpression;
 import javafx.scene.control.CheckBox;
 
+import java.io.Serializable;
 import java.time.LocalTime;
 
-public class Employee {
+public class Employee implements Serializable {
     private int Id ;
     private String FirstName;
     private String LastName ;
@@ -13,8 +15,8 @@ public class Employee {
     private String Tel ;
     private int DeltaWorkTime ;
     private Planning planning ;
-    private CheckBox Check_in;
-    private CheckBox Check_out;
+    private Boolean Check_in;
+    private Boolean Check_out;
 
     public Employee(int id, String firstName, String lastName, String post, String mail, String tel , int DeltaWorkTime, Planning planning) {
         Id = id;
@@ -27,20 +29,22 @@ public class Employee {
         LocalTime DateF =LocalTime.of(17,0);
         this.DeltaWorkTime = 0;
         this.planning = new Planning(DateD,DateF);
-        this.Check_in = new CheckBox();
-        this.Check_in.setSelected(false);
-        this.Check_out= new CheckBox();
-        this.Check_out.setSelected(false);
-        this.Check_out.setDisable(true);
+        Check_in = false;
+        Check_out = false;
+//        this.Check_in = new CheckBox();
+//        this.Check_in.setSelected(false);
+//        this.Check_out= new CheckBox();
+//        this.Check_out.setSelected(false);
+//        this.Check_out.setDisable(true);
 
-        this.Check_in.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue) {
-                Check_out.setDisable(false);
-            } else {
-                Check_out.setDisable(true);
-                Check_out.setSelected(false);
-            }
-        });
+//        this.Check_in.selectedProperty().addListener((observable, oldValue, newValue) -> {
+//            if (newValue) {
+//                Check_out.setDisable(false);
+//            } else {
+//                Check_out.setDisable(true);
+//                Check_out.setSelected(false);
+//            }
+//        });
     }
 
     public void setId(int id) {
@@ -67,8 +71,8 @@ public class Employee {
     public void setPlanning(Planning planning) {
         this.planning = planning;
     }
-    public void setCheck_in(Boolean config) {Check_in.setSelected(config);}
-    public void setCheck_out(Boolean config) {Check_out.setSelected(config);}
+    public void setCheck_in(Boolean config) {Check_in = config;}
+    public void setCheck_out(Boolean config) {Check_out = config;}
 
     public String getMail() {
         return Mail;
@@ -94,20 +98,20 @@ public class Employee {
     public Planning getPlanning() {
         return planning;
     }
-    public CheckBox getCheck_in() {return Check_in;}
-    public CheckBox getCheck_out() {return Check_out;}
+    public Boolean getCheck_in() {return Check_in;}
+    public Boolean getCheck_out() {return Check_out;}
 
     @Override
     public String toString() {
         System.out.println("Employee{\n" +
-                "Id= " + Id +
-                ", FirstName= " + FirstName +
-                ", LastName= " + LastName +
-                ", \nPost= " + Post +
-                ", Mail= " + Mail +
-                ", Tel= " + Tel +
-                ", \nCheck_in= " + Check_in.isSelected() +
-                ", \nCheck_out= " + Check_out.isSelected() +
+                "Id= " + getId() +
+                ", FirstName= " + getFirstName() +
+                ", LastName= " + getLastName() +
+                ", \nPost= " + getPost() +
+                ", Mail= " + getMail() +
+                ", Tel= " + getTel() +
+                ", \nCheck_in= " + getCheck_in()+
+                ", \nCheck_out= "+ getCheck_out() +
                 '}');
         return null;
     }
