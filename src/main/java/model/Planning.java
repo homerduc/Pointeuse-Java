@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalTime;
 
-public class Planning {
+public class Planning implements Serializable {
 
     private LocalTime Start ;
     private LocalTime End;

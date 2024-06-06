@@ -1,5 +1,6 @@
 package serialization;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Employee;
 import model.TimeClocking;
@@ -7,6 +8,9 @@ import model.TimeClocking;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Deserializer {
 
@@ -15,7 +19,8 @@ public class Deserializer {
         ObservableList<Employee> employees = null;
         try (FileInputStream fis = new FileInputStream(filename);
              ObjectInputStream ois = new ObjectInputStream(fis)) {
-            employees = (ObservableList<Employee>) ois.readObject();
+            List<Employee> list = (List<Employee>) ois.readObject();
+            employees = FXCollections.observableList(list);
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -27,7 +32,8 @@ public class Deserializer {
         ObservableList<TimeClocking> timeClockings = null;
         try (FileInputStream fis = new FileInputStream(filename);
              ObjectInputStream ois = new ObjectInputStream(fis)) {
-            timeClockings = (ObservableList<TimeClocking>) ois.readObject();
+            List<TimeClocking> list = (List<TimeClocking>) ois.readObject();
+            timeClockings = FXCollections.observableList(list);
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
