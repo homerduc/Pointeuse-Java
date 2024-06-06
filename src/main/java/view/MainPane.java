@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Tab;
 
 public class MainPane {
-
+    @FXML
     public Tab HistoryOfAllTime;
     @FXML
     private Tab EmployeeManagement;

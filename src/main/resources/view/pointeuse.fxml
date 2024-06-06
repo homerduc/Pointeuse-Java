@@ -10,17 +10,25 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="view.TimeClockingApplication">
+            fx:controller="view.TimeClockingApplication"
+            style="-fx-background-color: #66CDAA; -fx-font-style: italic;">
     <children>
-        <VBox alignment="CENTER" spacing="10">
-            <Label text="Nom de la compagnie" />
-            <Label fx:id="dateTimeLabel"  />
+        <VBox alignment="CENTER" spacing="10" AnchorPane.topAnchor="10.0" AnchorPane.leftAnchor="10.0">
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <children>
+                        <Label text="Company" style="-fx-font-size: 16px;" />
+                    </children>
+                </HBox>
+                <Label fx:id="dateTimeLabel" style="-fx-text-fill: black;" />
 
-            <HBox spacing="10" alignment="CENTER">
-                <TextField fx:id="employeeIdField" promptText="ID de l'employé" />
-                <Button fx:id="checkButton" text="Check In/Out" />
-            </HBox>
-            <ComboBox fx:id="CB_TimeClocking" promptText="Sélectionnez une option" />
+                <HBox spacing="10" alignment="CENTER">
+                    <children>
+                        <TextField fx:id="employeeIdField" promptText="ID de l'employé" />
+                        <Button fx:id="checkButton" text="Check In/Out" />
+                    </children>
+                </HBox>
+            </children>
         </VBox>
     </children>
 </AnchorPane>
