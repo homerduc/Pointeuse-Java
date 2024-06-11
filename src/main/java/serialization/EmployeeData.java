@@ -17,6 +17,7 @@ public abstract class EmployeeData {
 //            new Employee(4,"marcel","brique","employe","marcel.brique@gmail.com","0230215456",2, new Planning(LocalTime.of(8, 0), LocalTime.of(17, 0))),
 //            new Employee(5,"christine","chapeau","cadre","christine.chapeau@gmail.com","5456892123",12, new Planning(LocalTime.of(8, 0), LocalTime.of(17, 0)))
 //    );
+
     //region GETTER & SETTER
     public static ObservableList<Employee> getEmployeeList() {return employeeList;}
     public static void setEmployeeList(ObservableList<Employee> list) {employeeList=list;}
