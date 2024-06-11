@@ -24,7 +24,7 @@ public class ViewApplication extends Application {
     }
 
     private void startTCPServer() {
-        tcpServer = new TCPServer(1234);  // Spécifiez le port ici
+        tcpServer = new TCPServer(40);  // Spécifiez le port ici
         new Thread(() -> {
             tcpServer.startServer();
             System.out.println("Server started successfully");
