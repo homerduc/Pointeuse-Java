@@ -12,10 +12,10 @@ public class TCPClient {
         this.serverPort = serverPort;
     }
 
-    public void sendMessage(String message) throws IOException {
+    public static void sendMessage(String message) throws IOException {
         try {
             System.out.println("Connecting to server...");
-            Socket clientSocket = new Socket(serverAddress, serverPort);
+            Socket clientSocket = new Socket("localhost", 1234);
             System.out.println("Connected to server");
 
 
