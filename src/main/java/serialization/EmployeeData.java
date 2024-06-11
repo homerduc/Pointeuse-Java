@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Employee;
 import model.Planning;
+import model.TimeClocking;
 
 import java.time.LocalTime;
 
@@ -64,5 +65,9 @@ public abstract class EmployeeData {
 
     public static void updateFile(){
         Serializer.serializeEmployees(employeeList, "SaveEmployees.ser");
+    }
+
+    public static ObservableList<TimeClocking> getData() {
+        return Deserializer.deserializePointages("SaveEmployees.ser");
     }
 }

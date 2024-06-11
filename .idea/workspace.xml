@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31f36524-3413-4fb2-99be-b101b0533f32" name="Changes" comment="tcp" />
+    <list default="true" id="31f36524-3413-4fb2-99be-b101b0533f32" name="Changes" comment="• Maj" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,7 +32,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/homerduc/Pointeuse-Java.git&quot;,
-    &quot;accountId&quot;: &quot;741b48aa-8618-47db-802b-0409fcae2705&quot;
+    &quot;accountId&quot;: &quot;ede93f81-dc49-4a09-bf89-c452157b8477&quot;
   }
 }</component>
   <component name="MavenImportPreferences">
@@ -57,7 +57,6 @@
   &quot;keyToString&quot;: {
     &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
     &quot;Application.ViewApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ViewTimeClocking.executor&quot;: &quot;Run&quot;,
     &quot;Application.bloup.executor&quot;: &quot;Run&quot;,
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
@@ -83,20 +82,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.bloup">
-    <configuration name="ViewTimeClocking" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="view.ViewTimeClocking" />
-      <module name="Pointeu" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="view.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="bloup" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="view.ViewApplication" />
       <module name="Pointeu" />
@@ -115,11 +101,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.ViewTimeClocking" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -219,23 +200,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717703892850</updated>
     </task>
-    <task id="LOCAL-00012" summary="tcp">
+    <task id="LOCAL-00012" summary="• Maj">
       <option name="closed" value="true" />
-      <created>1717704427399</created>
+      <created>1718088294579</created>
       <option name="number" value="00012" />
       <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
-      <updated>1717704427399</updated>
+      <updated>1718088294579</updated>
     </task>
-    <task id="LOCAL-00013" summary="•">
-      <option name="closed" value="true" />
-      <created>1718089845526</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1718089845526</updated>
-    </task>
-    <option name="localTasksCounter" value="14" />
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -261,19 +234,17 @@
     <MESSAGE value="• Ajout couleur adaptative en temps reel&#10;• recherche qui s'adapte ...." />
     <MESSAGE value="• Mise a jour du graphisme de la page" />
     <MESSAGE value="first" />
-    <MESSAGE value="• Maj" />
     <MESSAGE value="• Plus de bugs de merdes" />
-    <MESSAGE value="tcp" />
-    <MESSAGE value="•" />
-    <option name="LAST_COMMIT_MESSAGE" value="•" />
+    <MESSAGE value="• Maj" />
+    <option name="LAST_COMMIT_MESSAGE" value="• Maj" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/view/EmployeeManagement.java</url>
-          <line>85</line>
-          <properties class="view.EmployeeManagement" method="UpdateTable">
+          <line>86</line>
+          <properties class="view.EmployeeManagement">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
@@ -283,11 +254,6 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="4" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/TCP/TCPServer.java</url>
-          <line>50</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
