@@ -26,7 +26,7 @@ public class TimeClockingData {
         Serializer.serializeTimeCLockings(timeClockingList, "SaveTimeClockings.ser");
     }
 
-    public static void getData() {
-        Deserializer.deserializePointages("SaveTimeClockings.ser");
+    public static ObservableList<TimeClocking> getData() {
+        return Deserializer.deserializePointages("SaveTimeClockings.ser");
     }
 }
