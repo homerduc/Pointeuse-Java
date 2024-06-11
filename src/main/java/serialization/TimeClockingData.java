@@ -2,30 +2,26 @@ package serialization;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import model.Employee;
 import model.TimeClocking;
-import model.Planning;
 
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
+public abstract class TimeClockingData {
 
-public class TimeClockingData {
-
-    //private static ObservableList<TimeClocking> timeClockingList =  Deserializer.deserializePointages("SaveTimeClockings.ser");
-    private static ObservableList<TimeClocking> timeClockingList = FXCollections.observableArrayList(
-            new TimeClocking(LocalDateTime.now(),EmployeeData.getEmployeeList().get(1)),
-            new TimeClocking(LocalDateTime.now(),EmployeeData.getEmployeeList().get(2))
-    );
-
+    private static ObservableList<TimeClocking> timeClockingList = FXCollections.observableArrayList();
 
     public static ObservableList<TimeClocking> getTimeClockingList() {
-        return timeClockingList; }
+        return timeClockingList;
+    }
 
-    public static void addTimeClocking(Employee employee) {
-        TimeClocking timeClocking = new TimeClocking(LocalDateTime.now(), employee);
+    public static void addTimeClocking(TimeClocking timeClocking) {
+        if (timeClockingList == null) {
+            timeClockingList = FXCollections.observableArrayList();
+        }
         timeClockingList.add(timeClocking);
     }
+
 
     public static void removeTimeClocking(TimeClocking timeClocking) {
         timeClockingList.remove(timeClocking);
@@ -35,7 +31,7 @@ public class TimeClockingData {
         Serializer.serializeTimeCLockings(timeClockingList, "SaveTimeClockings.ser");
     }
 
-    public static ObservableList<TimeClocking> getData() {
-        return Deserializer.deserializePointages("SaveTimeClockings.ser");
+    public static void getData() {
+        Deserializer.deserializePointages("SaveTimeClockings.ser");
     }
 }

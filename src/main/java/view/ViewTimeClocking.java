@@ -22,14 +22,12 @@ public class ViewTimeClocking extends Application {
 
         new Thread(() -> {
             try {
-
-                while (!isServerReady("localhost", 2288)) {
+                while (!isServerReady("localhost", 1234)) {
                     Thread.sleep(1000);
                 }
                 System.out.println("Server is ready, sending message");
 
-                TCPClient client = new TCPClient("localhost", 2288);
-                client.sendMessage("Hello from TCP Client");
+                TCPClient.sendMessage("Hello from TCP Client");
             } catch (InterruptedException | IOException e) {
                 e.printStackTrace();
             }
