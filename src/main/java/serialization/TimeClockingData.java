@@ -24,5 +24,6 @@ public class TimeClockingData {
 
     public static void updateFile() {
         Serializer.serializeTimeCLockings(timeClockingList, "SaveTimeClockings.ser");
+
     }
 }
