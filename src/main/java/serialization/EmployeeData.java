@@ -19,7 +19,9 @@ public abstract class EmployeeData {
 
     //region GETTER & SETTER
     public static ObservableList<Employee> getEmployeeList() {return employeeList;}
+
     public static void setEmployeeList(ObservableList<Employee> list) {employeeList=list;}
+
     public static int getNextId() {
         if (employeeList.isEmpty()) {
             Employee New = new Employee(1,"Admin","Admin","Admin","Admin","Admin",0,new Planning(LocalTime.of(8, 0), LocalTime.of(17, 0)));
