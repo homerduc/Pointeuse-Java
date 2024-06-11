@@ -4,14 +4,18 @@ import java.io.*;
 import java.net.*;
 
 public class TCPServer {
-    private static final int PORT = 1234; // Port utilisé par le serveur
+    private final int port;
     private ServerSocket serverSocket;
     private boolean isRunning;
 
+    public TCPServer(int port) {
+        this.port = port;
+    }
+
     public void startServer() {
         try {
-            serverSocket = new ServerSocket(PORT);
-            System.out.println("Server started on port " + PORT);
+            serverSocket = new ServerSocket(port);
+            System.out.println("Server started on port " + port);
             isRunning = true;
 
             while (isRunning) {
@@ -56,7 +60,6 @@ public class TCPServer {
 
                 String message = in.readLine();
                 System.out.println("Message received from client: " + message);
-
 
                 out.println("Server received your message: " + message);
 
