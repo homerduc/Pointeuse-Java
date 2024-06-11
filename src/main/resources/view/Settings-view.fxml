@@ -4,18 +4,20 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SettingsController">
-    <children>
-        <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="10.0">
-            <Label text="Settings" style="-fx-font-size: 24px; -fx-text-fill: white;"/>
-            <Label text="Adresse IP:"/>
-            <TextField fx:id="ipAddressField" promptText="Enter IP Address"/>
-            <Label text="Port:"/>
-            <TextField fx:id="portField" promptText="Enter Port"/>
-            <Button text="Save Settings" onAction="#saveSettings"/>
-            <Button text="Cancel" onAction="#cancelSettings"/>
-        </VBox>
-    </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #75bb99;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SettingsController">
+   <children>
+      <Label layoutX="487.0" layoutY="51.0" style="-fx-font-size: 24px; -fx-text-fill: white;" text="Settings" />
+      <Label layoutX="293.0" layoutY="127.0" prefHeight="27.0" prefWidth="102.0" text="Adresse IP :" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="ipAddressField" layoutX="406.0" layoutY="128.0" prefHeight="26.0" prefWidth="252.0" promptText="Enter IP Address" />
+      <Label layoutX="371.0" layoutY="196.0" text="Port:" textFill="WHITE" />
+      <TextField fx:id="portField" layoutX="406.0" layoutY="192.0" prefHeight="26.0" prefWidth="252.0" promptText="Enter Port" />
+      <Button layoutX="406.0" layoutY="265.0" onAction="#saveSettings" text="Save Settings" />
+      <Button layoutX="606.0" layoutY="265.0" onAction="#cancelSettings" text="Cancel" />
+   </children>
 </AnchorPane>
