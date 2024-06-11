@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Employee;
+import serialization.Deserializer;
 import serialization.EmployeeData;
 
 import java.net.URL;
@@ -101,11 +102,13 @@ public class EmployeeManagement implements Initializable {
         EmployeeData.addEmployee(text_firstname.getText(),text_lastname.getText(),text_post.getText(),text_email.getText(),text_tel.getText(),Integer.parseInt(text_delta.getText()));
         UpdateTable();
         clearTextfields();
+        EmployeeData.updateFile();
     }
     @FXML
     void setBut_suppr(ActionEvent event) {
         EmployeeData.removeEmployee(Table_EM.getSelectionModel().getSelectedItem());
         UpdateTable();
+        EmployeeData.updateFile();
     }
     @FXML
     void setBut_modif(){
@@ -137,6 +140,8 @@ public class EmployeeManagement implements Initializable {
             System.out.println("l'ADMIN a cliqué sur Non.");
         }
         UpdateTable();
+        EmployeeData.updateFile();
+        clearTextfields();
     }
     @FXML
     void clearTextfields(){
@@ -149,9 +154,4 @@ public class EmployeeManagement implements Initializable {
         text_delta.clear();
     }
 
-    @FXML
-    void setButCommit(){
-        EmployeeData.updateFile();
-    }
-    //endregion
 }

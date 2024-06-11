@@ -24,14 +24,18 @@ public class TodayClocking implements Initializable {
 
     public Button Info_but;
 
-
+    @FXML
     public TextField reserch_field;
+    @FXML
+    public CheckBox Checkboxin;
+    @FXML
+    public CheckBox Checkboxout;
     @FXML
     private TableView<Employee> Table;
     @FXML
-    private TableColumn<Employee, CheckBox> CHECKIN;
+    private TableColumn<Employee, Boolean> CHECKIN;
     @FXML
-    private TableColumn<Employee, CheckBox> CHECKOUT;
+    private TableColumn<Employee, Boolean> CHECKOUT;
     @FXML
     private TableColumn<Employee, Integer> ID;
     @FXML
@@ -111,9 +115,22 @@ public class TodayClocking implements Initializable {
             String planningString = planning.toString();
             return new ReadOnlyStringWrapper(planningString);
         });
-        CHECKIN.setCellValueFactory(new PropertyValueFactory<Employee, CheckBox>("Check_in"));
-        CHECKOUT.setCellValueFactory(new PropertyValueFactory<Employee, CheckBox>("Check_out"));
+        CHECKIN.setCellValueFactory(new PropertyValueFactory<Employee, Boolean>("Check_in"));
+        CHECKOUT.setCellValueFactory(new PropertyValueFactory<Employee, Boolean>("Check_out"));
         Raduibouton_couleur.setOnAction(event -> handleRadioButtonAction());
+
+        // Ajout des écouteurs pour les CheckBox
+        Checkboxin.setOnAction(event -> handleCheckInChange());
+        Checkboxout.setOnAction(event -> handleCheckOutChange());
+
+        Table.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                Checkboxin.setSelected(newValue.getCheck_in());
+                Checkboxout.setSelected(newValue.getCheck_in());
+
+
+            }
+        });
 
         UpdateTable();
     }
@@ -134,7 +151,7 @@ public class TodayClocking implements Initializable {
         if(Raduibouton_couleur.isSelected()){
 
             EventHandler<ActionEvent> eventHandler = event -> {
-                Couleurs();
+                //Couleurs();
             };
             KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.3), eventHandler);
             timeline = new Timeline(keyFrame);
@@ -153,36 +170,54 @@ public class TodayClocking implements Initializable {
         }
     }
 
-    @FXML
-    public void Couleurs(){
-        for (Employee employee : Table.getItems())
-        {
-
-            if (employee == null)
-            {
-                employee.getCheck_in().getParent().setStyle("-fx-background-color: white");
-                employee.getCheck_out().getParent().setStyle("-fx-background-color: white");
-            }
-            else if (employee.getCheck_in().isSelected() && employee.getCheck_out().isSelected())
-            {
-                employee.getCheck_in().getParent().setStyle("-fx-background-color: green");
-                employee.getCheck_out().getParent().setStyle("-fx-background-color: green");
-            }
-            else if (employee.getCheck_in().isSelected())
-            {
-                employee.getCheck_in().getParent().setStyle("-fx-background-color: orange");
-                employee.getCheck_out().getParent().setStyle("-fx-background-color: orange");
-            } else if(!employee.getCheck_in().isSelected() && !employee.getCheck_out().isSelected())
-            {
-                employee.getCheck_in().getParent().setStyle("-fx-background-color: red");
-                employee.getCheck_out().getParent().setStyle("-fx-background-color: red");
-            }
-        }
-    }
+//    @FXML
+//    public void Couleurs(){
+//        for (Employee employee : Table.getItems())
+//        {
+//
+//            if (employee == null)
+//            {
+//                employee.getCheck_in().getParent().setStyle("-fx-background-color: white");
+//                employee.getCheck_out().getParent().setStyle("-fx-background-color: white");
+//            }
+//            else if (employee.getCheck_in() && employee.getCheck_out())
+//            {
+//                employee.getCheck_in().getParent().setStyle("-fx-background-color: green");
+//                employee.getCheck_out().getParent().setStyle("-fx-background-color: green");
+//            }
+//            else if (employee.getCheck_in())
+//            {
+//                employee.getCheck_in().getParent().setStyle("-fx-background-color: orange");
+//                employee.getCheck_out().getParent().setStyle("-fx-background-color: orange");
+//            } else if(!employee.getCheck_in()&& !employee.getCheck_out())
+//            {
+//                employee.getCheck_in().getParent().setStyle("-fx-background-color: red");
+//                employee.getCheck_out().getParent().setStyle("-fx-background-color: red");
+//            }
+//        }
+//    }
 
     @FXML
     public void refresh(){
         Table.refresh();
+    }
+
+    @FXML
+    private void handleCheckInChange() {
+        Employee selectedEmployee = Table.getSelectionModel().getSelectedItem();
+        if (selectedEmployee != null) {
+            selectedEmployee.setCheck_in(Checkboxin.isSelected());
+            Table.refresh();
+        }
+    }
+
+    @FXML
+    private void handleCheckOutChange() {
+        Employee selectedEmployee = Table.getSelectionModel().getSelectedItem();
+        if (selectedEmployee != null) {
+            selectedEmployee.setCheck_out(Checkboxout.isSelected());
+            Table.refresh();
+        }
     }
 
 
