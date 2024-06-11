@@ -10,11 +10,8 @@ import java.util.List;
 
 public abstract class TimeClockingData {
 
-    private static ObservableList<TimeClocking> timeClockingList = Deserializer.deserializePointages("SaveTimeClockings.ser");
-//    private static ObservableList<TimeClocking> timeClockingList = FXCollections.observableArrayList(
-//            new TimeClocking(LocalDateTime.now(),EmployeeData.getEmployeeList().get(1)),
-//            new TimeClocking(LocalDateTime.now(),EmployeeData.getEmployeeList().get(2))
-//    );
+    //private static ObservableList<TimeClocking> timeClockingList = Deserializer.deserializePointages("SaveTimeClockings.ser");
+    private static ObservableList<TimeClocking> timeClockingList = TimeClockingData.getTimeClockingList();
 
     public static ObservableList<TimeClocking> getTimeClockingList() {
         return timeClockingList;

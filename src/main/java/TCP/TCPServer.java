@@ -90,6 +90,7 @@ public class TCPServer {
            timeClocking.setEmployee(EmployeeData.findEmployeeById(msgArray[0]));
            // DateTimeFormatter formatter=DateTimeFormatter.ofPattern("yyyy-MM-dd´T´HH:mm:ss");
             LocalDateTime dateTime=LocalDateTime.parse(msgArray[1],DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+            timeClocking.setDateTime(dateTime);
             return timeClocking;
 
         }

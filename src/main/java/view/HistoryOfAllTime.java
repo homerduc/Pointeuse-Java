@@ -6,19 +6,23 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.TimeClocking;
+import serialization.EmployeeData;
 import serialization.TimeClockingData;
 
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class HistoryOfAllTime implements Initializable {
 
+    public Button test_but;
     @FXML
     private TableColumn<TimeClocking, String> columnName;
     @FXML
@@ -62,6 +66,8 @@ public class HistoryOfAllTime implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        TimeClockingData.addTimeClocking(new TimeClocking(LocalDateTime.now(), EmployeeData.getEmployeeList().get(1)));
+
         columnName.setCellValueFactory(cellData -> {
             TimeClocking pointage = cellData.getValue();
             String fullName = pointage.getEmployee().getFirstName() + " " + pointage.getEmployee().getLastName();
@@ -83,5 +89,11 @@ public class HistoryOfAllTime implements Initializable {
         columnDelta.setCellValueFactory(new PropertyValueFactory<TimeClocking,Integer>("delta"));
 
         updateTable();
+    }
+    @FXML
+    void button_update(){
+        TimeClockingData.updateFile();
+        updateTable();
+        System.out.println(TimeClockingData.getTimeClockingList().toString()); 
     }
 }
