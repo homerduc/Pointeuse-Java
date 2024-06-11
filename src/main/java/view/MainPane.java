@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Tab;
 
 public class MainPane {
-
+    @FXML
     public Tab HistoryOfAllTime;
     @FXML
     private Tab EmployeeManagement;
@@ -30,4 +30,6 @@ public class MainPane {
             TodayCloking.setStyle("-fx-background-color: #568a70;");
         }
     }
+
+
 }

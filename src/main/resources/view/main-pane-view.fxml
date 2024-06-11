@@ -16,14 +16,20 @@
                 </Tab>
 
                 <Tab fx:id="HistoryOfAllTime" text="HistoryOfAllTime" onSelectionChanged="#Colorhoover" style="-fx-background-color: #568a70;">
-                  <content>
-                    <fx:include source="HistoryOfAllTime-view.fxml"/>
-                  </content>
+                    <content>
+                        <fx:include source="HistoryOfAllTime-view.fxml"/>
+                    </content>
                 </Tab>
 
                 <Tab fx:id="EmployeeManagement" onSelectionChanged="#Colorhoover" style="-fx-background-color: #568a70;" text="Employee Management">
                     <content>
                         <fx:include source="EmployeeManagement-view.fxml" />
+                    </content>
+                </Tab>
+
+                <Tab fx:id="Settings" onSelectionChanged="#Colorhoover" style="-fx-background-color: #568a70;" text="Settings">
+                    <content>
+                        <fx:include source="Settings-view.fxml" />
                     </content>
                 </Tab>
             </tabs>
