@@ -10,7 +10,7 @@ import javafx.scene.Parent;
 import java.io.IOException;
 
 public class ViewApplication extends Application {
-    private TCPServer tcpServer;
+   // private TCPServer tcpServer;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -20,9 +20,9 @@ public class ViewApplication extends Application {
         stage.setScene(scene);
         stage.show();
 
-        startTCPServer();
+      //  startTCPServer();
     }
-
+/*
     private void startTCPServer() {
         tcpServer = new TCPServer(1234);
         new Thread(() -> {
@@ -30,6 +30,8 @@ public class ViewApplication extends Application {
             System.out.println("Server started successfully");
         }).start();
     }
+
+ */
 
     public static void main(String[] args) {
         launch(args);

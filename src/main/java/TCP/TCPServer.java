@@ -1,7 +1,13 @@
 package TCP;
 
+import model.TimeClocking;
+import serialization.EmployeeData;
+import serialization.TimeClockingData;
+
 import java.io.*;
 import java.net.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class TCPServer {
     private final int port;
@@ -63,11 +69,30 @@ public class TCPServer {
 
                 out.println("Server received your message: " + message);
 
+                TimeClocking timeClocking= convertMsgTimeClocking(message);
+                TimeClockingData.addTimeClocking(timeClocking);
+                TimeClockingData.updateFile();
 
                 clientSocket.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (Exception e) {
+                if (e instanceof NullPointerException){
+                    // ne rien faire
+                }
+                else if (e instanceof IOException){
+                    e.printStackTrace();
+                }
+
             }
         }
+        public static TimeClocking convertMsgTimeClocking(String msg){
+           TimeClocking timeClocking=new TimeClocking();
+           String[] msgArray=msg.split(" ");
+           timeClocking.setEmployee(EmployeeData.findEmployeeById(msgArray[0]));
+           // DateTimeFormatter formatter=DateTimeFormatter.ofPattern("yyyy-MM-dd´T´HH:mm:ss");
+            LocalDateTime dateTime=LocalDateTime.parse(msgArray[1],DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+            return timeClocking;
+
+        }
+
     }
 }

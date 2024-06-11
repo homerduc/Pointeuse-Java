@@ -1,6 +1,7 @@
 package view;
 
 import TCP.TCPClient;
+import TCP.TCPServer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -12,6 +13,8 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 
 public class ViewTimeClocking extends Application {
+    private TCPServer tcpServer;
+
     @Override
     public void start(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("pointeuse.fxml"));
@@ -19,6 +22,8 @@ public class ViewTimeClocking extends Application {
         stage.setTitle("Time Clocking Application");
         stage.setScene(scene);
         stage.show();
+
+        startTCPServer();
 
         new Thread(() -> {
             try {
@@ -34,12 +39,28 @@ public class ViewTimeClocking extends Application {
         }).start();
     }
 
+    private void startTCPServer() {
+        tcpServer = new TCPServer(1234);
+        new Thread(() -> {
+            tcpServer.startServer();
+            System.out.println("Server started successfully");
+        }).start();
+    }
+
     private boolean isServerReady(String host, int port) {
         try (Socket socket = new Socket()) {
             socket.connect(new InetSocketAddress(host, port), 1000);
             return true;
         } catch (IOException e) {
             return false;
+        }
+    }
+
+    @Override
+    public void stop() throws Exception {
+        super.stop();
+        if (tcpServer != null) {
+            tcpServer.stopServer();
         }
     }
 
