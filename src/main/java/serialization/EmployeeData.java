@@ -1,6 +1,5 @@
 package serialization;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Employee;
 import model.Planning;
@@ -9,12 +8,12 @@ import java.time.LocalTime;
 
 public abstract class EmployeeData {
 
-    private static ObservableList<Employee> employeeList = Deserializer.deserializeEmployes("SauvegardeProjet.ser");
+    private static ObservableList<Employee> employeeList = Deserializer.deserializeEmployes("SaveEmployees.ser");
 
     //region GETTER & SETTER
     public static ObservableList<Employee> getEmployeeList() {return employeeList;}
 
-    public static void setEmployeeList(ObservableList<Employee> list) {employeeList=list;}
+    // public static void setEmployeeList(ObservableList<Employee> list) {employeeList=list;}
 
     public static int getNextId() {
         if (employeeList.isEmpty()) {
@@ -58,6 +57,6 @@ public abstract class EmployeeData {
     //endregion
 
     public static void updateFile(){
-        Serializer.serializeEmployees(employeeList,"SauvegardeProjet.ser");
+        Serializer.serializeEmployees(employeeList, "SaveEmployees.ser");
     }
 }
