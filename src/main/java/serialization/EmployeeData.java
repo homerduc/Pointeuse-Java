@@ -63,6 +63,13 @@ public abstract class EmployeeData {
     }
     //endregion
 
+    public static Employee findEmployeeById(String employeeId) {
+        return getEmployeeList().stream()
+                .filter(employee -> employee.getId() == Integer.parseInt(employeeId))
+                .findFirst()
+                .orElse(null);
+    }
+
     public static void updateFile(){
         Serializer.serializeEmployees(employeeList, "SaveEmployees.ser");
     }

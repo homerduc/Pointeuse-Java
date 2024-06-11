@@ -17,6 +17,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
+import static java.lang.String.valueOf;
+
 public class TimeClockingApplication implements Initializable {
 
     @FXML
@@ -36,10 +38,11 @@ public class TimeClockingApplication implements Initializable {
     private void handleCheckInOut() {
         String employeeId = employeeIdField.getText();
         if (employeeId != null && !employeeId.isEmpty()) {
-            Employee employee = findEmployeeById(employeeId);
+            Employee employee = EmployeeData.findEmployeeById(employeeId);
             if (employee != null) {
                 try {
-                    TCPClient.sendMessage("Check-In: Employee ID - " + employee.getId());
+                   // DateTimeFormatter formatter=DateTimeFormatter.ofPattern("yyyy-MM-dd´T´HH:mm:ss");
+                    TCPClient.sendMessage(valueOf(employee.getId())+ " "+ LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
                     System.out.println("Check-In: Employee ID - " + employee.getId() + " sent to server");
                 } catch (IOException e) {
                     System.out.println("La connexion a échoué.");
@@ -54,12 +57,7 @@ public class TimeClockingApplication implements Initializable {
         }
     }
 
-    private Employee findEmployeeById(String employeeId) {
-        return EmployeeData.getEmployeeList().stream()
-                .filter(employee -> employee.getId() == Integer.parseInt(employeeId))
-                .findFirst()
-                .orElse(null);
-    }
+
 
     @FXML
     private void updateDateTimeLabel() {
@@ -99,5 +97,14 @@ public class TimeClockingApplication implements Initializable {
 
     private void saveLocalPointage(TimeClocking timeClocking) {
         TimeClockingData.addTimeClocking(timeClocking);
+        TimeClockingData.updateFile();
+        if (timeClocking.getEmployee().getCheck_in()){
+            timeClocking.getEmployee().setCheck_out(true);
+        }
+        else {
+            timeClocking.getEmployee().setCheck_in(true);
+        }
+
+        EmployeeData.updateFile();
     }
 }
