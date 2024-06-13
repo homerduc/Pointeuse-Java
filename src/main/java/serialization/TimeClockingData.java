@@ -29,11 +29,18 @@ public abstract class TimeClockingData {
         timeClockingList.remove(timeClocking);
     }
 
+    // Met à jour le fichier avec la liste de la classe
     public static void updateFile() {
         Serializer.serializeTimeCLockings(timeClockingList, "SaveTimeClockings.ser");
     }
 
-    public static void getData() {
-        Deserializer.deserializePointages("SaveTimeClockings.ser");
+    // Met à jour la liste de la classe avec celle du fichier
+    public static void updateData() {
+        timeClockingList = getData();
+    }
+
+    // Renvoie la liste du fichier
+    public static ObservableList<TimeClocking> getData() {
+        return Deserializer.deserializePointages("SaveTimeClockings.ser");
     }
 }
