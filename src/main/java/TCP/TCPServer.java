@@ -92,12 +92,21 @@ public class TCPServer {
             }
         }
         public static TimeClocking convertMsgTimeClocking(String msg){
-           TimeClocking timeClocking=new TimeClocking();
-           String[] msgArray=msg.split(" ");
-           timeClocking.setEmployee(EmployeeData.findEmployeeById(msgArray[0]));
-           // DateTimeFormatter formatter=DateTimeFormatter.ofPattern("yyyy-MM-dd´T´HH:mm:ss");
+            //Création d'un objet time cloking
+            TimeClocking timeClocking=new TimeClocking();
+            String[] msgArray=msg.split(" ");
+            timeClocking.setEmployee(EmployeeData.findEmployeeById(msgArray[0]));
             LocalDateTime dateTime=LocalDateTime.parse(msgArray[1],DateTimeFormatter.ISO_LOCAL_DATE_TIME);
             timeClocking.setDateTime(dateTime);
+
+            //Changement de l'attribut check in ou check out de la personne
+            EmployeeData.changeChecked(timeClocking.getEmployee());
+
+            // ajout du delta a la personne
+
+
+
+
             return timeClocking;
 
         }
