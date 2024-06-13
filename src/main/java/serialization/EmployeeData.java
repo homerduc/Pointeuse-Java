@@ -79,7 +79,12 @@ public abstract class EmployeeData {
     }
 
     public static void changeChecked(Employee employee){
-
+        if(employee.getCheck_in()){
+            employee.setCheck_out(true);
+        }
+        else {
+            employee.setCheck_in(true);
+        }
     }
 
     public static void changeDelta(TimeClocking timeClocking){

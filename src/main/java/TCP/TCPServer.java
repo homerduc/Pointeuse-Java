@@ -93,11 +93,9 @@ public class TCPServer {
         }
         public static TimeClocking convertMsgTimeClocking(String msg){
             //Création d'un objet time cloking
-            TimeClocking timeClocking=new TimeClocking();
             String[] msgArray=msg.split(" ");
-            timeClocking.setEmployee(EmployeeData.findEmployeeById(msgArray[0]));
-            LocalDateTime dateTime=LocalDateTime.parse(msgArray[1],DateTimeFormatter.ISO_LOCAL_DATE_TIME);
-            timeClocking.setDateTime(dateTime);
+            TimeClocking timeClocking= new TimeClocking(LocalDateTime.parse(msgArray[1],
+                        DateTimeFormatter.ISO_LOCAL_DATE_TIME),EmployeeData.findEmployeeById(msgArray[0]));
 
             //Changement de l'attribut check in ou check out de la personne
             EmployeeData.changeChecked(timeClocking.getEmployee());
