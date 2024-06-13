@@ -164,6 +164,7 @@ public class TodayClocking implements Initializable {
             stopTimeline();
         }
     }
+
     public void stopTimeline() {
         if (timeline != null) {
             timeline.stop();
@@ -201,7 +202,6 @@ public class TodayClocking implements Initializable {
     public void refresh(){
         Table.refresh();
     }
-
     @FXML
     private void handleCheckInChange() {
         Employee selectedEmployee = Table.getSelectionModel().getSelectedItem();
@@ -210,7 +210,6 @@ public class TodayClocking implements Initializable {
             Table.refresh();
         }
     }
-
     @FXML
     private void handleCheckOutChange() {
         Employee selectedEmployee = Table.getSelectionModel().getSelectedItem();
