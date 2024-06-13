@@ -55,6 +55,9 @@ public class HistoryOfAllTime implements Initializable {
                 } else if (pointage.getEmployee().getLastName().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
                 }
+                else if (pointage.getDateTime().format(DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy")).contains(lowerCaseFilter)) {
+                    return true;
+                }
                 return false;
             });
         });
@@ -82,7 +85,7 @@ public class HistoryOfAllTime implements Initializable {
 
         columnDatetime.setCellValueFactory(cellData -> {
             TimeClocking pointage = cellData.getValue();
-            String datetimeString = pointage.getDateTime().format(DateTimeFormatter.ofPattern("HH:mm  [dd-MM-yyy] "));
+            String datetimeString = pointage.getDateTime().format(DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy"));
             return new ReadOnlyStringWrapper(datetimeString);
         });
 
