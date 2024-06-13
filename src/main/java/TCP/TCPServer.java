@@ -69,8 +69,15 @@ public class TCPServer {
 
                 out.println("Server received your message: " + message);
 
-                TimeClocking timeClocking= convertMsgTimeClocking(message);
+                // On redonne le contenu du fichier à la liste de TimeClockingData
+                TimeClockingData.updateData();
+
+                TimeClocking timeClocking = convertMsgTimeClocking(message);
+
+                // On ajoute le nouveau TimeClocking à la liste
                 TimeClockingData.addTimeClocking(timeClocking);
+
+                // On écrase le fichier avec la liste mise à jour
                 TimeClockingData.updateFile();
 
                 clientSocket.close();

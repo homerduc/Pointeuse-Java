@@ -41,7 +41,7 @@ public class HistoryOfAllTime implements Initializable {
     private FilteredList<TimeClocking> filteredList;
 
     public void updateTable() {
-        ObservableList<TimeClocking> listPointages = TimeClockingData.getTimeClockingList();
+        ObservableList<TimeClocking> listPointages = TimeClockingData.getData();
 
         filteredList = new FilteredList<>(listPointages, p -> true);
         reserch_field.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -66,7 +66,13 @@ public class HistoryOfAllTime implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        TimeClockingData.addTimeClocking(new TimeClocking(LocalDateTime.now(), EmployeeData.getEmployeeList().get(1)));
+
+        // TimeClockings de test
+        //TimeClockingData.addTimeClocking(new TimeClocking(LocalDateTime.now(), EmployeeData.getEmployeeList().get(0)));
+        //TimeClockingData.addTimeClocking(new TimeClocking(LocalDateTime.now(), EmployeeData.getEmployeeList().get(4)));
+
+        TimeClockingData.updateData();
+
 
         columnName.setCellValueFactory(cellData -> {
             TimeClocking pointage = cellData.getValue();
@@ -92,8 +98,6 @@ public class HistoryOfAllTime implements Initializable {
     }
     @FXML
     void button_update(){
-        TimeClockingData.updateFile();
         updateTable();
-        System.out.println(TimeClockingData.getTimeClockingList().toString()); 
     }
 }
