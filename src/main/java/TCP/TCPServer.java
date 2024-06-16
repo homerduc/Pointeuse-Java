@@ -100,13 +100,25 @@ public class TCPServer {
             Employee employee = EmployeeData.findEmployeeById(msgArray[0]);
 
             //Changement de l'attribut check in ou check out de la personne
-            //employee.Etatducheck();  //!\\
+            //employee.Etatducheck();  //!\\ si on le met dans une autre classe que ici ca ne marche pas
+                                       //!\\ ne fait apparaitre que le in et le ou dans le tableau
+                                       //!\\ raison obscure mais ne met pas a jour les attributs des employés
+
             if(!employee.getCheck_in()){
+//                System.out.println("in avant"+ employee.getCheck_in());
                 employee.setCheck_in(true);
+//                System.out.println(employee.getFirstName()+employee.getLastName());
+//                System.out.println("in apres"+ employee.getCheck_in());
+                EmployeeData.updateFile();
             }
             else if (employee.getCheck_in()&&! employee.getCheck_out()) {
+//                System.out.println("out avant"+ employee.getCheck_out());
                 employee.setCheck_out(true);
+//                System.out.println(employee.getFirstName()+employee.getLastName());
+//                System.out.println("out apres"+ employee.getCheck_out());
+                EmployeeData.updateFile();
             }
+
 
 //    création de l'objet timeclocking
             TimeClocking timeClocking= new TimeClocking(LocalDateTime.parse(msgArray[1],DateTimeFormatter.ISO_LOCAL_DATE_TIME),employee);

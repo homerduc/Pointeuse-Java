@@ -14,6 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Employee;
 import model.Planning;
+import serialization.EmployeeData;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -54,7 +55,10 @@ public class TodayClocking implements Initializable {
     private Timeline timeline;
 
     public void UpdateTable() {
+
         listemployee = serialization.EmployeeData.getEmployeeList();
+        EmployeeData.updateFile();
+
         FilteredList<Employee> filtreliste = new FilteredList<>(listemployee);
         reserch_field.textProperty().addListener((observable, oldValue,newValue)->{
             filtreliste.setPredicate(employee -> {
@@ -203,12 +207,14 @@ public class TodayClocking implements Initializable {
     public void refresh(){
         Table.refresh();
     }
+
     @FXML
     private void handleCheckInChange() {
         Employee selectedEmployee = Table.getSelectionModel().getSelectedItem();
         if (selectedEmployee != null) {
             selectedEmployee.setCheck_in(Checkboxin.isSelected());
             Table.refresh();
+            UpdateTable();
         }
     }
     @FXML
@@ -217,6 +223,7 @@ public class TodayClocking implements Initializable {
         if (selectedEmployee != null) {
             selectedEmployee.setCheck_out(Checkboxout.isSelected());
             Table.refresh();
+            UpdateTable();
         }
     }
 
