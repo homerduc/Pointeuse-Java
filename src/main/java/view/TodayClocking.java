@@ -103,6 +103,7 @@ public class TodayClocking implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
         ID.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("Id"));
         FULLNAME.setCellValueFactory(cellData -> {
             Employee employee = cellData.getValue();
@@ -125,9 +126,15 @@ public class TodayClocking implements Initializable {
 
         Table.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
-                Checkboxin.setSelected(newValue.getCheck_in());
-                Checkboxout.setSelected(newValue.getCheck_in());
 
+                Checkboxin.setSelected(newValue.getCheck_in());
+                Checkboxout.setSelected(newValue.getCheck_out());
+                if(!Checkboxin.isSelected()){
+                    Checkboxout.setDisable(true);
+                }
+                else{
+                    Checkboxout.setDisable(false);
+                }
 
             }
         });
@@ -137,13 +144,7 @@ public class TodayClocking implements Initializable {
 
     @FXML
     void setInfo_but() {
-        int selectedID = Table.getSelectionModel().getSelectedIndex();
-        for(Employee search : listemployee){
-            if(search.getId()== selectedID+1){
-                search.toString();
-            }
-        }
-
+        Table.getSelectionModel().getSelectedItem().toString();
     }
 
     @FXML

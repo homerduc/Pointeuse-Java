@@ -55,8 +55,7 @@ public class HistoryOfAllTime implements Initializable {
                 } else if (pointage.getEmployee().getLastName().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
                 }
-                else if (pointage.getDateTime().format(DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy")).contains(lowerCaseFilter))
-                {
+                else if (pointage.getDateTime().format(DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy")).contains(lowerCaseFilter)) {
                     return true;
                 }
                 return false;
