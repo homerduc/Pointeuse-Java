@@ -122,7 +122,9 @@ public class TCPServer {
             LocalDateTime CheckTime = LocalDateTime.parse(msgArray[1],DateTimeFormatter.ISO_LOCAL_DATE_TIME);
 
 
-//            changer le delta de la personne. //!\\ marche pas, faut faire un attribut delta dans timecloking
+//            Afficher le delta unique du pointage.
+                //!\\ marche pas, faut faire un attribut delta dans timecloking
+
 /*//            Pour le delta in
             LocalTime arriveRetard = LocalTime.of(8, 7);
             LocalTime arriveAvance = LocalTime.of(7, 53);

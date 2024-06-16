@@ -32,7 +32,7 @@ public class HistoryOfAllTime implements Initializable {
     @FXML
     private TableColumn<TimeClocking, String> columnDatetime;
     @FXML
-    private TableColumn<TimeClocking, Integer> columnDelta;
+    private TableColumn<TimeClocking, String> columnDelta;
     @FXML
     private TableView<TimeClocking> TableTimeCloking;
     @FXML
@@ -105,8 +105,11 @@ public class HistoryOfAllTime implements Initializable {
             String schedule = pointage.getEmployee().getPlanning().toString();
             return new ReadOnlyStringWrapper(schedule);
         });
-        columnDelta.setCellValueFactory(new PropertyValueFactory<TimeClocking,Integer>("delta"));
-
+        columnDelta.setCellValueFactory(cellData -> {
+            TimeClocking pointage = cellData.getValue();
+            String delta = String.valueOf(pointage.getEmployee().getDeltaWorkTime());
+            return new ReadOnlyStringWrapper(delta);
+        });
         updateTable();
     }
     @FXML
