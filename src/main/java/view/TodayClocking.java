@@ -55,9 +55,9 @@ public class TodayClocking implements Initializable {
     private Timeline timeline;
 
     public void UpdateTable() {
-
-        listemployee = serialization.EmployeeData.getEmployeeList();
         EmployeeData.updateFile();
+        listemployee = EmployeeData.getData();
+
 
         FilteredList<Employee> filtreliste = new FilteredList<>(listemployee);
         reserch_field.textProperty().addListener((observable, oldValue,newValue)->{
@@ -71,30 +71,10 @@ public class TodayClocking implements Initializable {
                     return true;
                 }
 
-                String lowercaseFilter = newValue.toLowerCase();
-                if (employee.getFirstName().toLowerCase().indexOf(lowercaseFilter)>-1)
-                {
-                    Info_but.setDisable(true);
-
-                    return true;
-                }
-                else if (employee.getLastName().toLowerCase().indexOf(lowercaseFilter)>-1)
-                {
-                    Info_but.setDisable(true);
-
-                    return true;
-                }
-                else if (String.valueOf(employee.getId()).indexOf(lowercaseFilter)>-1)
-                {
-                    Info_but.setDisable(true);
-
-
-                    return true;
-                }
-                else{
-
-                    return false;
-                }
+                String lowerCaseFilter = newValue.toLowerCase();
+                return employee.getFirstName().toLowerCase().contains(lowerCaseFilter)
+                        || employee.getLastName().toLowerCase().contains(lowerCaseFilter)
+                        || String.valueOf(employee.getId()).contains(lowerCaseFilter);
 
             });
         });
@@ -176,7 +156,7 @@ public class TodayClocking implements Initializable {
         }
     }
 
-//    @FXML
+//    @FXML                             //!\\ ne fonctionne que avec l'ancienne version ou on a des checkbox dans le tableau
 //    public void Couleurs(){
 //        for (Employee employee : Table.getItems())
 //        {
@@ -214,7 +194,7 @@ public class TodayClocking implements Initializable {
         if (selectedEmployee != null) {
             selectedEmployee.setCheck_in(Checkboxin.isSelected());
             Table.refresh();
-            UpdateTable();
+            EmployeeData.updateFile();
         }
     }
     @FXML
@@ -223,7 +203,7 @@ public class TodayClocking implements Initializable {
         if (selectedEmployee != null) {
             selectedEmployee.setCheck_out(Checkboxout.isSelected());
             Table.refresh();
-            UpdateTable();
+            EmployeeData.updateFile();
         }
     }
 
