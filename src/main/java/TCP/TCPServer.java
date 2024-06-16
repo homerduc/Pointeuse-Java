@@ -103,7 +103,6 @@ public class TCPServer {
 
             //Changement de l'attribut check in ou check out de la personne
             //employee.Etatducheck();  //!\\ si on le met dans une autre classe que ici ca ne marche pas
-                                       //!\\ ne fait apparaitre que le in et le ou dans le tableau
                                        //!\\ pour voir le changement des attribut dans le premier tableau il faut relancer l'app
 
             if(!employee.getCheck_in()){
@@ -120,32 +119,32 @@ public class TCPServer {
 //                System.out.println("out apres"+ employee.getCheck_out());
                 EmployeeData.updateFile();
             }
-
-            // changer le delta de la personne.
-
             LocalDateTime CheckTime = LocalDateTime.parse(msgArray[1],DateTimeFormatter.ISO_LOCAL_DATE_TIME);
-////            Pour le delta in
-//            LocalTime arriveRetard = LocalTime.of(8, 7);
-//            LocalTime arriveAvance = LocalTime.of(7, 53);
-////            Pour le delta out
-//            LocalTime partirRetard= LocalTime.of(17, 7);
-//            LocalTime partirAvance = LocalTime.of(16, 53);
-//
-//            if (CheckTime.isBefore(ChronoLocalDateTime.from(arriveAvance))&& employee.getCheck_in()){
-//                employee.setDeltaWorkTime(employee.getDeltaWorkTime()-1);
-//            }
-//            else if (CheckTime.isAfter(ChronoLocalDateTime.from(arriveRetard))&& employee.getCheck_in()){
-//                employee.setDeltaWorkTime(employee.getDeltaWorkTime()+1);
-//            }
-//            else if (CheckTime.isBefore(ChronoLocalDateTime.from(partirAvance))&& employee.getCheck_out()){
-//                employee.setDeltaWorkTime(employee.getDeltaWorkTime()+1);
-//            }
-//            else if (CheckTime.isAfter(ChronoLocalDateTime.from(partirRetard))&& employee.getCheck_out()){
-//                employee.setDeltaWorkTime(employee.getDeltaWorkTime()-1);
-//            }
 
 
-//    création de l'objet timeclocking
+//            changer le delta de la personne. //!\\ marche pas, faut faire un attribut delta dans timecloking
+/*//            Pour le delta in
+            LocalTime arriveRetard = LocalTime.of(8, 7);
+            LocalTime arriveAvance = LocalTime.of(7, 53);
+//            Pour le delta out
+            LocalTime partirRetard= LocalTime.of(17, 7);
+            LocalTime partirAvance = LocalTime.of(16, 53);
+
+            if (CheckTime.isBefore(ChronoLocalDateTime.from(arriveAvance))&& employee.getCheck_in()){
+                employee.setDeltaWorkTime(employee.getDeltaWorkTime()-1);
+            }
+            else if (CheckTime.isAfter(ChronoLocalDateTime.from(arriveRetard))&& employee.getCheck_in()){
+                employee.setDeltaWorkTime(employee.getDeltaWorkTime()+1);
+            }
+            else if (CheckTime.isBefore(ChronoLocalDateTime.from(partirAvance))&& employee.getCheck_out()){
+                employee.setDeltaWorkTime(employee.getDeltaWorkTime()+1);
+            }
+            else if (CheckTime.isAfter(ChronoLocalDateTime.from(partirRetard))&& employee.getCheck_out()){
+                employee.setDeltaWorkTime(employee.getDeltaWorkTime()-1);
+//            }*/
+
+
+//création de l'objet timeclocking
             return new TimeClocking(CheckTime,employee);
 
         }

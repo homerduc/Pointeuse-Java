@@ -31,6 +31,8 @@ public class TodayClocking implements Initializable {
     public CheckBox Checkboxin;
     @FXML
     public CheckBox Checkboxout;
+    @FXML
+    public Button butRefresh;
 
     @FXML
     private TableView<Employee> Table;
@@ -206,5 +208,7 @@ public class TodayClocking implements Initializable {
         EmployeeData.updateFile();
         UpdateTable();
     }
+
+
 
 }

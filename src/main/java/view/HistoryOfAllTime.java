@@ -41,6 +41,7 @@ public class HistoryOfAllTime implements Initializable {
     private FilteredList<TimeClocking> filteredList;
 
     public void updateTable() {
+
         ObservableList<TimeClocking> listPointages = TimeClockingData.getData();
 
         filteredList = new FilteredList<>(listPointages, p -> true);
@@ -111,5 +112,6 @@ public class HistoryOfAllTime implements Initializable {
     @FXML
     void button_update(){
         updateTable();
+
     }
 }

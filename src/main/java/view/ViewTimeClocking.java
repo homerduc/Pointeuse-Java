@@ -7,10 +7,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
+import model.Employee;
+import serialization.EmployeeData;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.chrono.ChronoLocalDateTime;
 
 public class ViewTimeClocking extends Application {
     private TCPServer tcpServer;
@@ -22,7 +27,7 @@ public class ViewTimeClocking extends Application {
         stage.setTitle("Time Clocking Application");
         stage.setScene(scene);
         stage.show();
-
+        //startVerrificationTime();
         startTCPServer();
 
         new Thread(() -> {
@@ -63,8 +68,21 @@ public class ViewTimeClocking extends Application {
             tcpServer.stopServer();
         }
     }
+    public void startVerrificationTime(){
+        while(true){
+            if(LocalDateTime.now().isEqual(ChronoLocalDateTime.from(LocalTime.of(0,0)))){
+                for(Employee i : EmployeeData.getEmployeeList()){
+                    i.setCheck_in(false);
+                    i.setCheck_out(false);
+                }
+                EmployeeData.updateFile();
+            }
+        }
+    }
 
     public static void main(String[] args) {
         launch(args);
+
+
     }
 }
