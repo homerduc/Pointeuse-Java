@@ -61,7 +61,6 @@
                      </stops>
                   </LinearGradient>
                </textFill></RadioButton>
-            <Button fx:id="resetChecksValues" mnemonicParsing="false" onAction="#UpdateTable" text="reset checks" />
             </items>
         </ToolBar>
       <CheckBox fx:id="Checkboxin" layoutX="608.0" layoutY="31.0" mnemonicParsing="false" onAction="#handleCheckInChange" />

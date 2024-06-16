@@ -31,7 +31,7 @@ public class TodayClocking implements Initializable {
     public CheckBox Checkboxin;
     @FXML
     public CheckBox Checkboxout;
-    public Button resetChecksValues;
+
     @FXML
     private TableView<Employee> Table;
     @FXML
@@ -195,6 +195,7 @@ public class TodayClocking implements Initializable {
         Integer selectedEmployee = Table.getSelectionModel().getSelectedItem().getId();
         EmployeeData.findEmployeeById(String.valueOf(selectedEmployee)).setCheck_in(Checkboxin.isSelected());
         EmployeeData.updateFile();
+        UpdateTable();
 
 
     }
@@ -203,12 +204,7 @@ public class TodayClocking implements Initializable {
         Integer selectedEmployee = Table.getSelectionModel().getSelectedItem().getId();
         EmployeeData.findEmployeeById(String.valueOf(selectedEmployee)).setCheck_out(Checkboxout.isSelected());
         EmployeeData.updateFile();
-
-
+        UpdateTable();
     }
-
-
-
-
 
 }
