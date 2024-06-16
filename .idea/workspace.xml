@@ -91,7 +91,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ViewTimeClocking">
+  <component name="RunManager" selected="Application.bloup">
     <configuration name="ViewTimeClocking" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="view.ViewTimeClocking" />
       <module name="Pointeu" />
