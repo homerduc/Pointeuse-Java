@@ -31,6 +31,7 @@ public class TodayClocking implements Initializable {
     public CheckBox Checkboxin;
     @FXML
     public CheckBox Checkboxout;
+    public Button resetChecksValues;
     @FXML
     private TableView<Employee> Table;
     @FXML
@@ -55,7 +56,7 @@ public class TodayClocking implements Initializable {
     private Timeline timeline;
 
     public void UpdateTable() {
-        EmployeeData.updateFile();
+
         listemployee = EmployeeData.getData();
 
 
@@ -81,6 +82,7 @@ public class TodayClocking implements Initializable {
         SortedList<Employee> SortedData = new SortedList<>(filtreliste);
         SortedData.comparatorProperty().bind(Table.comparatorProperty());
 
+        EmployeeData.updateFile();
         Table.setItems(SortedData);//|listemployee
 
     }
@@ -189,23 +191,22 @@ public class TodayClocking implements Initializable {
     }
 
     @FXML
-    private void handleCheckInChange() {
-        Employee selectedEmployee = Table.getSelectionModel().getSelectedItem();
-        if (selectedEmployee != null) {
-            selectedEmployee.setCheck_in(Checkboxin.isSelected());
-            Table.refresh();
-            EmployeeData.updateFile();
-        }
+    public void handleCheckInChange() {
+        Integer selectedEmployee = Table.getSelectionModel().getSelectedItem().getId();
+        EmployeeData.findEmployeeById(String.valueOf(selectedEmployee)).setCheck_in(Checkboxin.isSelected());
+        EmployeeData.updateFile();
+
+
     }
     @FXML
-    private void handleCheckOutChange() {
-        Employee selectedEmployee = Table.getSelectionModel().getSelectedItem();
-        if (selectedEmployee != null) {
-            selectedEmployee.setCheck_out(Checkboxout.isSelected());
-            Table.refresh();
-            EmployeeData.updateFile();
-        }
+    public void handleCheckOutChange() {
+        Integer selectedEmployee = Table.getSelectionModel().getSelectedItem().getId();
+        EmployeeData.findEmployeeById(String.valueOf(selectedEmployee)).setCheck_out(Checkboxout.isSelected());
+        EmployeeData.updateFile();
+
+
     }
+
 
 
 
