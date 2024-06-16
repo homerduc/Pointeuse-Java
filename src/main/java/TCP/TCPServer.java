@@ -1,5 +1,6 @@
 package TCP;
 
+import model.Employee;
 import model.TimeClocking;
 import serialization.EmployeeData;
 import serialization.TimeClockingData;
@@ -92,18 +93,23 @@ public class TCPServer {
             }
         }
         public static TimeClocking convertMsgTimeClocking(String msg){
-            //Création d'un objet time cloking
+
             String[] msgArray=msg.split(" ");
-            TimeClocking timeClocking= new TimeClocking(LocalDateTime.parse(msgArray[1],
-                        DateTimeFormatter.ISO_LOCAL_DATE_TIME),EmployeeData.findEmployeeById(msgArray[0]));
+
+            //Creation de la référence de l'employe
+            Employee employee = EmployeeData.findEmployeeById(msgArray[0]);
 
             //Changement de l'attribut check in ou check out de la personne
-            EmployeeData.changeChecked(timeClocking.getEmployee());
+            //employee.Etatducheck();  //!\\
+            if(!employee.getCheck_in()){
+                employee.setCheck_in(true);
+            }
+            else if (employee.getCheck_in()&&! employee.getCheck_out()) {
+                employee.setCheck_out(true);
+            }
 
-            // ajout du delta a la personne
-
-
-
+//    création de l'objet timeclocking
+            TimeClocking timeClocking= new TimeClocking(LocalDateTime.parse(msgArray[1],DateTimeFormatter.ISO_LOCAL_DATE_TIME),employee);
 
             return timeClocking;
 

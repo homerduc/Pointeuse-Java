@@ -70,10 +70,6 @@ public class HistoryOfAllTime implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        // TimeClockings de test
-        //TimeClockingData.addTimeClocking(new TimeClocking(LocalDateTime.now(), EmployeeData.getEmployeeList().get(0)));
-        //TimeClockingData.addTimeClocking(new TimeClocking(LocalDateTime.now(), EmployeeData.getEmployeeList().get(4)));
-
         TimeClockingData.updateData();
 
 
@@ -89,7 +85,20 @@ public class HistoryOfAllTime implements Initializable {
             return new ReadOnlyStringWrapper(datetimeString);
         });
 
-        columnNature.setCellValueFactory(new PropertyValueFactory<TimeClocking,String>("nature"));
+        columnNature.setCellValueFactory(cellData -> {
+            TimeClocking pointage = cellData.getValue();
+            String answer = "";
+            if(!pointage.getEmployee().getCheck_out()&&pointage.getEmployee().getCheck_in()){
+                answer = "IN";
+            }
+            else if (pointage.getEmployee().getCheck_out()){
+                answer = "out";
+            }
+            else if (!pointage.getEmployee().getCheck_out()&&!pointage.getEmployee().getCheck_in()){
+                answer = "null";
+            }
+            return new ReadOnlyStringWrapper(answer);
+        });
         columnSchedule.setCellValueFactory(cellData -> {
             TimeClocking pointage = cellData.getValue();
             String schedule = pointage.getEmployee().getPlanning().toString();

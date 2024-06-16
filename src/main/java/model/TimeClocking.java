@@ -7,12 +7,20 @@ public class TimeClocking implements Serializable {
 
     private LocalDateTime DateTime ;
     private Employee employee ;
+    //private String etat; /!\
 
     public TimeClocking(){}
 
     public TimeClocking(LocalDateTime dateTime, Employee employee) {
         DateTime = dateTime;
         this.employee = employee;
+
+//  /!\      if(employee.getCheck_in()&&!employee.getCheck_out()){
+//            etat = "IN";
+//        }
+//        else if (employee.getCheck_in()&&employee.getCheck_out()){
+//            etat = "out";
+//        }
     }
 
     public LocalDateTime getDateTime() {
@@ -30,7 +38,6 @@ public class TimeClocking implements Serializable {
     public void setEmployee(Employee employee) {
         this.employee = employee;
     }
-    //public void timechekingestime (local DateTime dateTime)
 
 }
 

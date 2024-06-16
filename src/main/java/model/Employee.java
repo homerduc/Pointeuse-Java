@@ -102,6 +102,14 @@ public class Employee implements Serializable {
     }
     public Boolean getCheck_in() {return Check_in;}
     public Boolean getCheck_out() {return Check_out;}
+//!\\
+//
+//
+//    public void reinitCheck(){
+//        setCheck_out(false);
+//        setCheck_in(false);
+//    }
+//!\\
 
     @Override
     public String toString() {
