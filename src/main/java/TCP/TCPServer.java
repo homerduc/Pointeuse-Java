@@ -1,5 +1,6 @@
 package TCP;
 
+import model.Employee;
 import model.TimeClocking;
 import serialization.EmployeeData;
 import serialization.TimeClockingData;
@@ -7,6 +8,8 @@ import serialization.TimeClockingData;
 import java.io.*;
 import java.net.*;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.chrono.ChronoLocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class TCPServer {
@@ -92,20 +95,59 @@ public class TCPServer {
             }
         }
         public static TimeClocking convertMsgTimeClocking(String msg){
-            //Création d'un objet time cloking
+
             String[] msgArray=msg.split(" ");
-            TimeClocking timeClocking= new TimeClocking(LocalDateTime.parse(msgArray[1],
-                        DateTimeFormatter.ISO_LOCAL_DATE_TIME),EmployeeData.findEmployeeById(msgArray[0]));
+
+            //Creation de la référence de l'employe
+            Employee employee = EmployeeData.findEmployeeById(msgArray[0]);
 
             //Changement de l'attribut check in ou check out de la personne
-            EmployeeData.changeChecked(timeClocking.getEmployee());
+            //employee.Etatducheck();  //!\\ si on le met dans une autre classe que ici ca ne marche pas
+                                       //!\\ pour voir le changement des attribut dans le premier tableau il faut relancer l'app
 
-            // ajout du delta a la personne
+            if(!employee.getCheck_in()){
+//                System.out.println("in avant"+ employee.getCheck_in());
+                employee.setCheck_in(true);
+//                System.out.println(employee.getFirstName()+employee.getLastName());
+//                System.out.println("in apres"+ employee.getCheck_in());
+                EmployeeData.updateFile();
+            }
+            else if (employee.getCheck_in()&&! employee.getCheck_out()) {
+//                System.out.println("out avant"+ employee.getCheck_out());
+                employee.setCheck_out(true);
+//                System.out.println(employee.getFirstName()+employee.getLastName());
+//                System.out.println("out apres"+ employee.getCheck_out());
+                EmployeeData.updateFile();
+            }
+            LocalDateTime CheckTime = LocalDateTime.parse(msgArray[1],DateTimeFormatter.ISO_LOCAL_DATE_TIME);
 
 
+//            Afficher le delta unique du pointage.
+                //!\\ marche pas, faut faire un attribut delta dans timecloking
+
+/*//            Pour le delta in
+            LocalTime arriveRetard = LocalTime.of(8, 7);
+            LocalTime arriveAvance = LocalTime.of(7, 53);
+//            Pour le delta out
+            LocalTime partirRetard= LocalTime.of(17, 7);
+            LocalTime partirAvance = LocalTime.of(16, 53);
+
+            if (CheckTime.isBefore(ChronoLocalDateTime.from(arriveAvance))&& employee.getCheck_in()){
+                employee.setDeltaWorkTime(employee.getDeltaWorkTime()-1);
+            }
+            else if (CheckTime.isAfter(ChronoLocalDateTime.from(arriveRetard))&& employee.getCheck_in()){
+                employee.setDeltaWorkTime(employee.getDeltaWorkTime()+1);
+            }
+            else if (CheckTime.isBefore(ChronoLocalDateTime.from(partirAvance))&& employee.getCheck_out()){
+                employee.setDeltaWorkTime(employee.getDeltaWorkTime()+1);
+            }
+            else if (CheckTime.isAfter(ChronoLocalDateTime.from(partirRetard))&& employee.getCheck_out()){
+                employee.setDeltaWorkTime(employee.getDeltaWorkTime()-1);
+//            }*/
 
 
-            return timeClocking;
+//création de l'objet timeclocking
+            return new TimeClocking(CheckTime,employee);
 
         }
 

@@ -14,6 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Employee;
 import model.Planning;
+import serialization.EmployeeData;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -30,6 +31,9 @@ public class TodayClocking implements Initializable {
     public CheckBox Checkboxin;
     @FXML
     public CheckBox Checkboxout;
+    @FXML
+    public Button butRefresh;
+
     @FXML
     private TableView<Employee> Table;
     @FXML
@@ -54,7 +58,10 @@ public class TodayClocking implements Initializable {
     private Timeline timeline;
 
     public void UpdateTable() {
-        listemployee = serialization.EmployeeData.getEmployeeList();
+
+        listemployee = EmployeeData.getData();
+
+
         FilteredList<Employee> filtreliste = new FilteredList<>(listemployee);
         reserch_field.textProperty().addListener((observable, oldValue,newValue)->{
             filtreliste.setPredicate(employee -> {
@@ -67,36 +74,17 @@ public class TodayClocking implements Initializable {
                     return true;
                 }
 
-                String lowercaseFilter = newValue.toLowerCase();
-                if (employee.getFirstName().toLowerCase().indexOf(lowercaseFilter)>-1)
-                {
-                    Info_but.setDisable(true);
-
-                    return true;
-                }
-                else if (employee.getLastName().toLowerCase().indexOf(lowercaseFilter)>-1)
-                {
-                    Info_but.setDisable(true);
-
-                    return true;
-                }
-                else if (String.valueOf(employee.getId()).indexOf(lowercaseFilter)>-1)
-                {
-                    Info_but.setDisable(true);
-
-
-                    return true;
-                }
-                else{
-
-                    return false;
-                }
+                String lowerCaseFilter = newValue.toLowerCase();
+                return employee.getFirstName().toLowerCase().contains(lowerCaseFilter)
+                        || employee.getLastName().toLowerCase().contains(lowerCaseFilter)
+                        || String.valueOf(employee.getId()).contains(lowerCaseFilter);
 
             });
         });
         SortedList<Employee> SortedData = new SortedList<>(filtreliste);
         SortedData.comparatorProperty().bind(Table.comparatorProperty());
 
+        EmployeeData.updateFile();
         Table.setItems(SortedData);//|listemployee
 
     }
@@ -172,7 +160,7 @@ public class TodayClocking implements Initializable {
         }
     }
 
-//    @FXML
+//    @FXML                             //!\\ ne fonctionne que avec l'ancienne version ou on a des checkbox dans le tableau
 //    public void Couleurs(){
 //        for (Employee employee : Table.getItems())
 //        {
@@ -203,23 +191,23 @@ public class TodayClocking implements Initializable {
     public void refresh(){
         Table.refresh();
     }
-    @FXML
-    private void handleCheckInChange() {
-        Employee selectedEmployee = Table.getSelectionModel().getSelectedItem();
-        if (selectedEmployee != null) {
-            selectedEmployee.setCheck_in(Checkboxin.isSelected());
-            Table.refresh();
-        }
-    }
-    @FXML
-    private void handleCheckOutChange() {
-        Employee selectedEmployee = Table.getSelectionModel().getSelectedItem();
-        if (selectedEmployee != null) {
-            selectedEmployee.setCheck_out(Checkboxout.isSelected());
-            Table.refresh();
-        }
-    }
 
+    @FXML
+    public void handleCheckInChange() {
+        Integer selectedEmployee = Table.getSelectionModel().getSelectedItem().getId();
+        EmployeeData.findEmployeeById(String.valueOf(selectedEmployee)).setCheck_in(Checkboxin.isSelected());
+        EmployeeData.updateFile();
+        UpdateTable();
+
+
+    }
+    @FXML
+    public void handleCheckOutChange() {
+        Integer selectedEmployee = Table.getSelectionModel().getSelectedItem().getId();
+        EmployeeData.findEmployeeById(String.valueOf(selectedEmployee)).setCheck_out(Checkboxout.isSelected());
+        EmployeeData.updateFile();
+        UpdateTable();
+    }
 
 
 

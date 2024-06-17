@@ -32,7 +32,7 @@ public class HistoryOfAllTime implements Initializable {
     @FXML
     private TableColumn<TimeClocking, String> columnDatetime;
     @FXML
-    private TableColumn<TimeClocking, Integer> columnDelta;
+    private TableColumn<TimeClocking, String> columnDelta;
     @FXML
     private TableView<TimeClocking> TableTimeCloking;
     @FXML
@@ -41,6 +41,7 @@ public class HistoryOfAllTime implements Initializable {
     private FilteredList<TimeClocking> filteredList;
 
     public void updateTable() {
+
         ObservableList<TimeClocking> listPointages = TimeClockingData.getData();
 
         filteredList = new FilteredList<>(listPointages, p -> true);
@@ -70,10 +71,6 @@ public class HistoryOfAllTime implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        // TimeClockings de test
-        //TimeClockingData.addTimeClocking(new TimeClocking(LocalDateTime.now(), EmployeeData.getEmployeeList().get(0)));
-        //TimeClockingData.addTimeClocking(new TimeClocking(LocalDateTime.now(), EmployeeData.getEmployeeList().get(4)));
-
         TimeClockingData.updateData();
 
 
@@ -89,18 +86,35 @@ public class HistoryOfAllTime implements Initializable {
             return new ReadOnlyStringWrapper(datetimeString);
         });
 
-        columnNature.setCellValueFactory(new PropertyValueFactory<TimeClocking,String>("nature"));
+        columnNature.setCellValueFactory(cellData -> {
+            TimeClocking pointage = cellData.getValue();
+            String answer = "";
+            if(!pointage.getEmployee().getCheck_out()&&pointage.getEmployee().getCheck_in()){
+                answer = "IN";
+            }
+            else if (pointage.getEmployee().getCheck_out()){
+                answer = "out";
+            }
+            else if (!pointage.getEmployee().getCheck_out()&&!pointage.getEmployee().getCheck_in()){
+                answer = "null";
+            }
+            return new ReadOnlyStringWrapper(answer);
+        });
         columnSchedule.setCellValueFactory(cellData -> {
             TimeClocking pointage = cellData.getValue();
             String schedule = pointage.getEmployee().getPlanning().toString();
             return new ReadOnlyStringWrapper(schedule);
         });
-        columnDelta.setCellValueFactory(new PropertyValueFactory<TimeClocking,Integer>("delta"));
-
+        columnDelta.setCellValueFactory(cellData -> {
+            TimeClocking pointage = cellData.getValue();
+            String delta = String.valueOf(pointage.getEmployee().getDeltaWorkTime());
+            return new ReadOnlyStringWrapper(delta);
+        });
         updateTable();
     }
     @FXML
     void button_update(){
         updateTable();
+
     }
 }
