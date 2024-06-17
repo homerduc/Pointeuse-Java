@@ -9,8 +9,8 @@ On y trouve une application centrale et une pointeuse.
 * ***EmployeeManagement*** : permettant l'ajout, la suppression et la modification d'un.e employé.e (nom,prenom,tel,ail,post....).
 * ***Settings*** : pour faire le paramérage de la connexion TCP entre l'application centrale et la pointeuse.
 
-### Remarque :
-* L'affichage de TodayCloking ne se met pas à jour lors d'un pointage, il faut refermer l'application centrale pour voir le changement sur le status de validation de la personne
+> [!Remarque]
+> L'affichage de TodayCloking ne se met pas à jour lors d'un pointage, il faut refermer l'application centrale pour voir le changement sur le status de validation de la personne
 ___________________
 ### La ponteuse :
 * Un espace pour rentrer l'ID de lemployé
