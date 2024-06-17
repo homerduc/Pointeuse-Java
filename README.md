@@ -1,4 +1,4 @@
-# INTRO
+ # INTRO
 Dans ce projet, nous avons créé une pointeuse et une application centrale de gestion pouvant être situées entre deux appareils communiquant par une connexion TCP.
 
 # FONCTIONNEMENT
@@ -13,7 +13,7 @@ Dans ce projet, nous avons créé une pointeuse et une application centrale de g
 > * L'affichage de TodayCloking ne se met pas à jour lors d'un pointage, il faut refermer l'application centrale pour voir le changement sur le status de validation de la personne
 
 > [!TIP]
-> [Vidéo du fonctionnement](https://youtu.be/f_niUCTh2lY)(casque audio consieillé car le volume de la vidéo est bas)
+> [Vidéo du fonctionnement (casque audio consieillé car le volume de la vidéo est bas)](https://youtu.be/f_niUCTh2lY) 
 ___________________
 ### La pointeuse :
 * Un espace pour rentrer l'ID de lemployé
