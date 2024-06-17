@@ -25,7 +25,7 @@ ___________________
 * ajouter
 
 # PERSPECTIVES DU PROJET
-> [!NOTE] PERSPECTIVES DU PROJET
+> [!IMPORTANT]
 > * Utilisation du département
 > * Faire en sorte que l'affichage ***TodayCloking*** se mette à jours lors d'un pointage.
 > * L'ajout du delta de la personne et l'affichage du delta unique d'un pointage sur ***HistoryOfAllTime*** en fonction de l'avance ou du retard.
