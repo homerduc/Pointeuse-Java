@@ -11,6 +11,9 @@ Dans ce projet, nous avons créé une pointeuse et une application centrale de g
 > [!WARNING]
 > * Lors de l'ouverture de l'application un warning apparait concernant l'affichage car on force une colorisation.
 > * L'affichage de TodayCloking ne se met pas à jour lors d'un pointage, il faut refermer l'application centrale pour voir le changement sur le status de validation de la personne
+
+> [!TIP]
+> [Vidéo du fonctionnement](https://youtu.be/f_niUCTh2lY)
 ___________________
 ### La pointeuse :
 * Un espace pour rentrer l'ID de lemployé
