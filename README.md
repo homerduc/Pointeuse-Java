@@ -4,7 +4,7 @@ On y trouve une application centrale et une pointeuse.
 
 # FONCTIONNEMENT
 ### L'application centrale à 4 onglets: 
-* ***TodayClocking*** : sert à cocher (ou enlever) manuellement l'arrivée et le départ d'une personne (nom, prenom, planing, check-in,check-out).
+* <ins>TodayClocking</ins>: sert à cocher (ou enlever) manuellement l'arrivée et le départ d'une personne (nom, prenom, planing, check-in,check-out).
 * ***HistoryOfAllTime*** : regroupant tous les pointages fait depuis le tout début (nom,status du pointage,planing,heure du pointage,delta).
 * ***EmployeeManagement*** : permettant l'ajout, la suppression et la modification d'un.e employé.e (nom,prenom,tel,ail,post....).
 * ***Settings*** : pour faire le paramérage de la connexion TCP entre l'application centrale et la pointeuse.
