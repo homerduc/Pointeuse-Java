@@ -19,6 +19,10 @@ import serialization.EmployeeData;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * The TodayClocking class manages the user interface for displaying and interacting with employee check-in and check-out status.
+ * It includes functionalities for filtering employees, updating their status, and handling visual enhancements.
+ */
 public class TodayClocking implements Initializable {
 
     private static TodayClocking instance;
@@ -57,6 +61,9 @@ public class TodayClocking implements Initializable {
 
     private Timeline timeline;
 
+    /**
+     * Updates the TableView with the current employee data, applying filters if any, and initializes event listeners.
+     */
     public void UpdateTable() {
 
         listemployee = EmployeeData.getData();
@@ -89,6 +96,12 @@ public class TodayClocking implements Initializable {
 
     }
 
+    /**
+     * Initializes the TodayClocking controller, setting up column cell value factories, event handlers, and initial data display.
+     *
+     * @param url            The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param rb The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -130,11 +143,19 @@ public class TodayClocking implements Initializable {
         UpdateTable();
     }
 
+    /**
+     * Handles the action when Info_but button is clicked.
+     * Displays detailed information about the selected employee.
+     */
     @FXML
     void setInfo_but() {
         Table.getSelectionModel().getSelectedItem().toString();
     }
 
+    /**
+     * Handles the action when Raduibouton_couleur RadioButton is selected.
+     * Initiates or stops a timeline for visual enhancements based on employee status.
+     */
     @FXML
     public void handleRadioButtonAction() {
         if(Raduibouton_couleur.isSelected()){
@@ -154,6 +175,9 @@ public class TodayClocking implements Initializable {
         }
     }
 
+    /**
+     * Stops the running timeline for visual enhancements.
+     */
     public void stopTimeline() {
         if (timeline != null) {
             timeline.stop();
@@ -187,11 +211,18 @@ public class TodayClocking implements Initializable {
 //        }
 //    }
 
+    /**
+     * Refreshes the TableView to update any visual changes.
+     */
     @FXML
     public void refresh(){
         Table.refresh();
     }
 
+    /**
+     * Handles the action when Checkboxin CheckBox is selected/deselected.
+     * Updates the check-in status of the selected employee.
+     */
     @FXML
     public void handleCheckInChange() {
         Integer selectedEmployee = Table.getSelectionModel().getSelectedItem().getId();
@@ -201,6 +232,10 @@ public class TodayClocking implements Initializable {
 
 
     }
+    /**
+     * Handles the action when Checkboxout CheckBox is selected/deselected.
+     * Updates the check-out status of the selected employee.
+     */
     @FXML
     public void handleCheckOutChange() {
         Integer selectedEmployee = Table.getSelectionModel().getSelectedItem().getId();

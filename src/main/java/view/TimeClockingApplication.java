@@ -19,6 +19,10 @@ import java.util.ResourceBundle;
 
 import static java.lang.String.valueOf;
 
+/**
+ * The TimeClockingApplication class handles the user interface for employee check-in and check-out.
+ * It sends check-in/out information to a server using TCP communication or saves locally if the connection fails.
+ */
 public class TimeClockingApplication implements Initializable {
 
     @FXML
@@ -28,12 +32,24 @@ public class TimeClockingApplication implements Initializable {
     @FXML
     private Label dateTimeLabel;
 
+    /**
+     * Initializes the TimeClockingApplication controller.
+     * Sets up action handling for the checkButton and updates the date/time label.
+     *
+     * @param url            The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resourceBundle The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         updateDateTimeLabel();
         checkButton.setOnAction(event -> handleCheckInOut());
     }
 
+    /**
+     * Handles the action when the checkButton is pressed.
+     * Retrieves the employee ID from the employeeIdField, finds the corresponding employee,
+     * and either sends a check-in/out message to the server or saves locally if the connection fails.
+     */
     @FXML
     private void handleCheckInOut() {
         String employeeId = employeeIdField.getText();
@@ -57,8 +73,9 @@ public class TimeClockingApplication implements Initializable {
         }
     }
 
-
-
+    /**
+     * Updates the date/time label with the current date and rounded time to the nearest quarter hour.
+     */
     @FXML
     private void updateDateTimeLabel() {
         if (dateTimeLabel != null) {
@@ -77,6 +94,12 @@ public class TimeClockingApplication implements Initializable {
         }
     }
 
+    /**
+     * Rounds the given dateTime to the nearest quarter hour.
+     *
+     * @param dateTime The LocalDateTime to be rounded.
+     * @return The rounded LocalDateTime.
+     */
     private LocalDateTime roundToNearestQuarterHour(LocalDateTime dateTime) {
         int minute = dateTime.getMinute();
         int roundedMinute;
@@ -95,6 +118,11 @@ public class TimeClockingApplication implements Initializable {
         return dateTime.withMinute(roundedMinute).withSecond(0).withNano(0);
     }
 
+    /**
+     * Saves the TimeClocking locally if the server connection fails.
+     *
+     * @param timeClocking The TimeClocking object to be saved locally.
+     */
     private void saveLocalPointage(TimeClocking timeClocking) {
         TimeClockingData.addTimeClocking(timeClocking);
         TimeClockingData.updateFile();

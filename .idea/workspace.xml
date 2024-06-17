@@ -8,7 +8,23 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SaveEmployees.ser" beforeDir="false" afterPath="$PROJECT_DIR$/SaveEmployees.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SaveTimeClockings.ser" beforeDir="false" afterPath="$PROJECT_DIR$/SaveTimeClockings.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/TodayCloking-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/TodayCloking-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/TCP/TCPClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TCP/TCPClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/TCP/TCPServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TCP/TCPServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Company.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Department.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Department.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Planning.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Planning.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/TimeClocking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/TimeClocking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/serialization/Deserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/serialization/Deserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/serialization/EmployeeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/serialization/EmployeeData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/serialization/Serializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/serialization/Serializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/serialization/TimeClockingData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/serialization/TimeClockingData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/EmployeeManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/EmployeeManagement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/HistoryOfAllTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/HistoryOfAllTime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/SettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/SettingsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/TimeClockingApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/TimeClockingApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/TodayClocking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/TodayClocking.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +56,9 @@
     &quot;assignee&quot;: &quot;liliangsqr&quot;
   }
 }</component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="2178a0e3-039a-46cc-a7a9-6b642e9f7495" />
+  </component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/homerduc/Pointeuse-Java.git&quot;,
@@ -64,28 +83,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.HelloApplication.executor": "Run",
-    "Application.ViewApplication.executor": "Run",
-    "Application.ViewTimeClocking.executor": "Run",
-    "Application.bloup.executor": "Run",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ghesq/AppData/Local/SceneBuilder/SceneBuilder.exe",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ViewApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ViewTimeClocking.executor&quot;: &quot;Run&quot;,
+    &quot;Application.bloup.executor&quot;: &quot;Run&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ghesq/AppData/Local/SceneBuilder/SceneBuilder.exe&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ghesq\IdeaProjects\Pointeuse-Java\src\main\java" />
@@ -94,7 +113,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.bloup">
+  <component name="RunManager" selected="Application.ViewTimeClocking">
     <configuration name="ViewTimeClocking" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="view.ViewTimeClocking" />
       <module name="Pointeu" />

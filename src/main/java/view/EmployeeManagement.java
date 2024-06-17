@@ -12,6 +12,11 @@ import serialization.EmployeeData;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
+/**
+ * The EmployeeManagement class controls the user interface for managing employees.
+ * It handles CRUD operations (Create, Read, Update, Delete) on employee data and updates the UI accordingly.
+ */
 public class EmployeeManagement implements Initializable {
 
     //region ATTRIBUTS
@@ -64,6 +69,13 @@ public class EmployeeManagement implements Initializable {
     private ObservableList<Employee> list_employee;
     //endregion
 
+    /**
+     * Initializes the controller class.
+     * Sets up listeners for table selection changes and initializes the table view with employee data.
+     *
+     * @param url the location used to resolve relative paths for the root object, or null if the location is not known
+     * @param rb the resources used to localize the root object, or null if the root object was not localized
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         list_employee = EmployeeData.getEmployeeList();
@@ -83,6 +95,10 @@ public class EmployeeManagement implements Initializable {
         UpdateTable();
     }
 
+    /**
+     * Updates the table view with the latest employee data.
+     * Configures cell value factories to display employee attributes in table columns.
+     */
     public void UpdateTable() {
         col_id.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("Id"));
         col_fname.setCellValueFactory(new PropertyValueFactory<Employee, String>("FirstName"));
@@ -95,7 +111,10 @@ public class EmployeeManagement implements Initializable {
         Table_EM.setItems(list_employee);
     }
 
-    //region BOUTONS
+    /**
+     * Handles the action when the "Add" button is clicked.
+     * Adds a new employee to the list based on the input fields.
+     */
     @FXML
     void setBut_add() {
 
@@ -104,12 +123,24 @@ public class EmployeeManagement implements Initializable {
         clearTextfields();
         EmployeeData.updateFile();
     }
+
+    /**
+     * Handles the action when the "Delete" button is clicked.
+     * Removes the selected employee from the list.
+     *
+     * @param event the ActionEvent triggered by the button click
+     */
     @FXML
     void setBut_suppr(ActionEvent event) {
         EmployeeData.removeEmployee(Table_EM.getSelectionModel().getSelectedItem());
         UpdateTable();
         EmployeeData.updateFile();
     }
+
+    /**
+     * Handles the action when the "Modify" button is clicked.
+     * Modifies the selected employee's details based on the input fields.
+     */
     @FXML
     void setBut_modif(){
 
@@ -143,6 +174,10 @@ public class EmployeeManagement implements Initializable {
         EmployeeData.updateFile();
         clearTextfields();
     }
+
+    /**
+     * Clears all input text fields.
+     */
     @FXML
     void clearTextfields(){
         text_id.clear();

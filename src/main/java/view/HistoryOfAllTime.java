@@ -20,6 +20,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
+/**
+ * The HistoryOfAllTime class controls the user interface for displaying and filtering time clocking data.
+ * It provides functionality to update the table view based on user input and filter criteria.
+ */
 public class HistoryOfAllTime implements Initializable {
 
     public Button test_but;
@@ -40,6 +44,10 @@ public class HistoryOfAllTime implements Initializable {
 
     private FilteredList<TimeClocking> filteredList;
 
+    /**
+     * Updates the table view with the latest time clocking data.
+     * Applies filtering based on the contents of the research field.
+     */
     public void updateTable() {
 
         ObservableList<TimeClocking> listPointages = TimeClockingData.getData();
@@ -68,6 +76,14 @@ public class HistoryOfAllTime implements Initializable {
 
         TableTimeCloking.setItems(sortedData);
     }
+
+    /**
+     * Initializes the controller class.
+     * Sets up cell value factories for table columns and updates the table view with initial data.
+     *
+     * @param url the location used to resolve relative paths for the root object, or null if the location is not known
+     * @param rb the resources used to localize the root object, or null if the root object was not localized
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -112,6 +128,11 @@ public class HistoryOfAllTime implements Initializable {
         });
         updateTable();
     }
+
+    /**
+     * Handles the action when the "Update" button is clicked.
+     * Updates the table view with the latest filtered data.
+     */
     @FXML
     void button_update(){
         updateTable();

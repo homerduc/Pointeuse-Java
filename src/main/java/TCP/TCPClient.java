@@ -3,15 +3,30 @@ package TCP;
 import java.io.*;
 import java.net.*;
 
+/**
+ * The TCPClient class represents a client that communicates with a server over TCP/IP.
+ */
 public class TCPClient {
     private final String serverAddress;
     private final int serverPort;
 
+    /**
+     * Constructs a TCPClient with the specified server address and port.
+     *
+     * @param serverAddress the IP address or hostname of the server
+     * @param serverPort the port number of the server
+     */
     public TCPClient(String serverAddress, int serverPort) {
         this.serverAddress = serverAddress;
         this.serverPort = serverPort;
     }
 
+    /**
+     * Sends a message to the server and receives a response.
+     *
+     * @param message the message to send to the server
+     * @throws IOException if an I/O error occurs while sending or receiving data
+     */
     public static void sendMessage(String message) throws IOException {
         try {
             System.out.println("Connecting to server...");

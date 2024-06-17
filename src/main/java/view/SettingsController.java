@@ -7,6 +7,10 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The SettingsController class manages the application settings.
+ * It provides functionality to save IP address and port settings to a file using serialization.
+ */
 public class SettingsController {
 
     @FXML
@@ -15,6 +19,11 @@ public class SettingsController {
     @FXML
     private TextField portField;
 
+    /**
+     * Saves the current IP address and port settings to a file.
+     * Serializes the settings into a HashMap and writes it to "settings.ser".
+     * If an IOException occurs during file writing, prints the stack trace.
+     */
     @FXML
     private void saveSettings() {
         String ipAddress = ipAddressField.getText();
@@ -32,8 +41,5 @@ public class SettingsController {
         }
     }
 
-    @FXML
-    private void cancelSettings() {
-        // Code pour fermer la fenêtre des paramètres
-    }
+
 }

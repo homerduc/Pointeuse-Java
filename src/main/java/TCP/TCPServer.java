@@ -12,15 +12,27 @@ import java.time.LocalTime;
 import java.time.chrono.ChronoLocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * The TCPServer class represents a TCP server that listens for incoming client connections
+ * and handles communication with clients.
+ */
 public class TCPServer {
     private final int port;
     private ServerSocket serverSocket;
     private boolean isRunning;
 
+    /**
+     * Constructs a TCPServer that will listen on the specified port.
+     *
+     * @param port the port number on which the server will listen
+     */
     public TCPServer(int port) {
         this.port = port;
     }
 
+    /**
+     * Starts the TCP server and begins accepting client connections.
+     */
     public void startServer() {
         try {
             serverSocket = new ServerSocket(port);
@@ -40,6 +52,9 @@ public class TCPServer {
         }
     }
 
+    /**
+     * Stops the TCP server and closes the server socket.
+     */
     public void stopServer() {
         try {
             if (serverSocket != null && !serverSocket.isClosed()) {
@@ -52,14 +67,24 @@ public class TCPServer {
         }
     }
 
-
+    /**
+     * The ClientHandler class handles communication with a single client.
+     */
     private static class ClientHandler implements Runnable {
         private final Socket clientSocket;
 
+        /**
+         * Constructs a ClientHandler with the given client socket.
+         *
+         * @param clientSocket the socket representing the client connection
+         */
         public ClientHandler(Socket clientSocket) {
             this.clientSocket = clientSocket;
         }
 
+        /**
+         * Handles communication with the client.
+         */
         @Override
         public void run() {
             try {
@@ -94,6 +119,13 @@ public class TCPServer {
 
             }
         }
+
+        /**
+         * Converts the received message into a TimeClocking object.
+         *
+         * @param msg the message received from the client
+         * @return the TimeClocking object created from the message
+         */
         public static TimeClocking convertMsgTimeClocking(String msg){
 
             String[] msgArray=msg.split(" ");
