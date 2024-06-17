@@ -13,7 +13,7 @@ Dans ce projet, nous avons créé une pointeuse et une application centrale de g
 > * L'affichage de TodayCloking ne se met pas à jour lors d'un pointage, il faut refermer l'application centrale pour voir le changement sur le status de validation de la personne
 
 > [!TIP]
-> [Vidéo du fonctionnement](https://youtu.be/f_niUCTh2lY)
+> [Vidéo du fonctionnement](https://youtu.be/f_niUCTh2lY)(casque audio consieillé car le volume de la vidéo est bas)
 ___________________
 ### La pointeuse :
 * Un espace pour rentrer l'ID de lemployé
