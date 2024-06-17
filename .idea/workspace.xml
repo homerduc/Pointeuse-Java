@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31f36524-3413-4fb2-99be-b101b0533f32" name="Changes" comment="La vie de ma mere on touche plus">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SaveEmployees.ser" beforeDir="false" afterPath="$PROJECT_DIR$/SaveEmployees.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SaveTimeClockings.ser" beforeDir="false" afterPath="$PROJECT_DIR$/SaveTimeClockings.ser" afterDir="false" />
-    </list>
+    <list default="true" id="31f36524-3413-4fb2-99be-b101b0533f32" name="Changes" comment="Changement de nom etc ..." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,28 +59,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ViewApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ViewTimeClocking.executor&quot;: &quot;Run&quot;,
-    &quot;Application.bloup.executor&quot;: &quot;Run&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ghesq/AppData/Local/SceneBuilder/SceneBuilder.exe&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Application Centrale.executor": "Run",
+    "Application.HelloApplication.executor": "Run",
+    "Application.Pointeuse.executor": "Run",
+    "Application.ViewApplication.executor": "Run",
+    "Application.ViewTimeClocking.executor": "Run",
+    "Application.bloup.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/ghesq/AppData/Local/SceneBuilder/SceneBuilder.exe",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ghesq\IdeaProjects\Pointeuse-Java\src\main\java" />
@@ -328,7 +326,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718627907304</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Changement de nom etc ...">
+      <option name="closed" value="true" />
+      <created>1718649428631</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1718649428631</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -365,7 +371,8 @@
     <MESSAGE value="• le delta impossible a faire sans tout refaire ( movaise structure, beaucoup de temps, flemme de faire, a mettre dans les persectives du projet)&#10;• interraction Timecloking -&gt; history good &#10;• interraction Hstory -&gt; Time cloking pas good" />
     <MESSAGE value="• le delta impossible a faire sans tout refaire ( movaise structure, beaucoup de temps, flemme de faire, a mettre dans les persectives du projet)&#10;• interraction Timecloking -&gt; history good &#10;• interraction Hstory -&gt; Time cloking pas good si on veut voir dans la premiere table le changement effectué grace a la pointeuse il faut relancer Bloup" />
     <MESSAGE value="La vie de ma mere on touche plus" />
-    <option name="LAST_COMMIT_MESSAGE" value="La vie de ma mere on touche plus" />
+    <MESSAGE value="Changement de nom etc ..." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changement de nom etc ..." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
