@@ -8,6 +8,7 @@ L'application centrale à 4 onglets:
 * ***HistoryOfAllTime*** regroupant tous les pointages fait depuis le tout début.
 * ***EmployeeManagement*** permettant l'ajout, la suppression et la modification d'un employée (nom,prenom,tel,ail,post....).
 * ***Settings*** pour faire le paramérage de la connexion TCP entre l'application centrale et la pointeuse.
+
 La ponteuse :
 * Un espace pour rentrer l'ID de lemployé
 * un bouton pour valider la saisie.
