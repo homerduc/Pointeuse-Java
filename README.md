@@ -13,4 +13,12 @@ La ponteuse :
 * Un espace pour rentrer l'ID de lemployé
 * un bouton pour valider la saisie.
   
+# FONCTIONNEMENT
+model-view-Conroler : 
+*
+*
+
+TCP : 
+*
+*
 
