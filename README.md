@@ -11,16 +11,16 @@ L'application centrale à 4 onglets:
 
 ### Remarque :
 * L'affichage de TodayCloking ne se met pas à jour lors d'un pointage, il faut refermer l'application centrale pour voir le changement sur le status de validation de la personne
-
-La ponteuse :
+___________________
+### La ponteuse :
 * Un espace pour rentrer l'ID de lemployé
 * un bouton pour valider la saisie.
   
-Model-view-Conroler : 
+### Model-view-Conroler : 
 * ajouter
 * ajouter
 
-TCP : 
+### TCP : 
 * ajouter
 * ajouter
 
