@@ -13,7 +13,7 @@ Dans ce projet, nous avons créé une pointeuse et une application centrale de g
 ___________________
 ### La pointeuse :
 * Un espace pour rentrer l'ID de lemployé
-* un bouton pour valider la saisie.
+* Un bouton pour valider la saisie.
   
 ### TCP : 
 * La communication TCP est utilisée pour assurer la transmission fiable des données entre l'application centrale et la pointeuse. 
