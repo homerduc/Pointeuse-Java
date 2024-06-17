@@ -12,7 +12,7 @@ On y trouve une application centrale et une pointeuse.
 > [!WARNING]
 > L'affichage de TodayCloking ne se met pas à jour lors d'un pointage, il faut refermer l'application centrale pour voir le changement sur le status de validation de la personne
 ___________________
-### La ponteuse :
+### La pointeuse :
 * Un espace pour rentrer l'ID de lemployé
 * un bouton pour valider la saisie.
   
@@ -21,8 +21,12 @@ ___________________
 * ajouter
 
 ### TCP : 
-* ajouter
-* ajouter
+* La communication TCP est utilisée pour assurer la transmission fiable des données entre l'application centrale et la pointeuse. 
+* Protocole : Utilisation de TCP pour échanger les horaires de pointage et les configurations entre l'application centrale et la pointeuse. 
+* TCPServer : Gère les connexions entrantes côté application centrale. 
+* TCPClient : Connecte la pointeuse au serveur central pour envoyer les horaires de pointage. 
+* Sécurité et fiabilité : Mécanismes intégrés pour assurer une communication sécurisée et fiable, incluant la gestion des erreurs et la reprise après incidents.
+
 
 # PERSPECTIVES DU PROJET
 > [!IMPORTANT]
