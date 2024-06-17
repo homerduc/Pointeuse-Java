@@ -1,4 +1,4 @@
-# INTRO
+ # INTRO
 Dans ce projet, nous avons créé une pointeuse et une application centrale de gestion pouvant être situées entre deux appareils communiquant par une connexion TCP.
 
 # FONCTIONNEMENT
@@ -9,7 +9,11 @@ Dans ce projet, nous avons créé une pointeuse et une application centrale de g
 * ***Settings*** : pour faire le paramérage de la connexion TCP entre l'application centrale et la pointeuse.
 
 > [!WARNING]
-> L'affichage de TodayCloking ne se met pas à jour lors d'un pointage, il faut refermer l'application centrale pour voir le changement sur le status de validation de la personne
+> * Lors de l'ouverture de l'application un warning apparait concernant l'affichage car on force une colorisation.
+> * L'affichage de TodayCloking ne se met pas à jour lors d'un pointage, il faut refermer l'application centrale pour voir le changement sur le status de validation de la personne
+
+> [!TIP]
+> [Vidéo du fonctionnement (casque audio consieillé car le volume de la vidéo est bas)](https://youtu.be/f_niUCTh2lY) 
 ___________________
 ### La pointeuse :
 * Un espace pour rentrer l'ID de lemployé
@@ -25,13 +29,12 @@ ___________________
 ### Lancer le projet
 Nous avons créé dans IntelliJ deux configurations de lancement : Pointeuse et Application Centrale. Les applications peuvent être lancées dans l'ordre que l'on veut, sans nécessité que l'autre soit ouverte aussi.
 # CHOIX DE CONCEPTION
-### Design pattern Model-View-Controller
 
+### Design pattern Model-View-Controller
 Nous avons passé plusieurs séances à réfléchir à l'implémentation du pattern MVC, pour finalement obtenir la structure actuelle :
 * Vue : contient l'entièreté de ce qui concerne de près ou de loin JavaFX
 * Modèle : contient donc les structures de données de base (employés, pointages, entreprise, etc)
-* Contrôleur est un peu spécial car il fait aussi office de "sérialiseur". Comme la quasi totalité des échanges de données entre la vue et le modèle concernent la sauvegarde des données, nous avons fait en sorte que ces échanges consistent à sérialiser les données lorsqu'elles sont modifiées, et à les désérialiser lorsqu'il faut les afficher. Tout cela est encapsulé dans les classes EmployeeData et TimeClockingData qui servent donc d'intermédiaire entre la vue et le modèle.
-Dans le code cela se traduit par 3 packages : View, Model, et Serialization (qui je le rappelle est le contrôleur).
+* Contrôleur est un peu spécial car il fait aussi office de "sérialiseur". Comme la quasi totalité des échanges de données entre la vue et le modèle concernent la sauvegarde des données, nous avons fait en sorte que ces échanges consistent à sérialiser les données lorsqu'elles sont modifiées, et à les désérialiser lorsqu'il faut les afficher. Tout cela est encapsulé dans les classes EmployeeData et TimeClockingData qui servent donc d'intermédiaire entre la vue et le modèle.Dans le code cela se traduit par 3 packages : View, Model, et Serialization (qui je le rappelle est le contrôleur).
 Un dernier package TCP existe pour encapsuler tout ce qui concerne l'échange entre les applications.
 
 # PERSPECTIVES DU PROJET
